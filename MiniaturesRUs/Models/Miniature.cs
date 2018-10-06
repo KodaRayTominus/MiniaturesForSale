@@ -41,6 +41,10 @@ namespace MiniaturesRUs.Models
 
         public int Defense { get; set; }
 
+        public Miniature()
+        {
+        }
+
         public Miniature(string name, double price, string description, DateTime year, string gameName, string faction)
         {
             Name = name;
