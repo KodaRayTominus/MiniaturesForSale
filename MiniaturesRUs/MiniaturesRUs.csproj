@@ -211,7 +211,7 @@
     <Compile Include="Models\Miniature.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Controllers\MiniaturesController.cs" />
+    <Compile Include="Views\MiniaturesController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />

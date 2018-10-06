@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using MiniaturesRUs.Models;
 
-namespace MiniaturesRUs.Controllers
+namespace MiniaturesRUs.Views
 {
     public class MiniaturesController : Controller
     {
