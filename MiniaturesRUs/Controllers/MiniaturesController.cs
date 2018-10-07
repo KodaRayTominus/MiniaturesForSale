@@ -27,7 +27,7 @@ namespace MiniaturesRUs.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Miniature miniature = db.Minitures.Find(id);
+            Miniature miniature = MiniatureDB.GetMiniatureById(id);
             if (miniature == null)
             {
                 return HttpNotFound();
@@ -50,8 +50,7 @@ namespace MiniaturesRUs.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Minitures.Add(miniature);
-                db.SaveChanges();
+                MiniatureDB.AddMiniatureToDB(miniature);
                 return RedirectToAction("Index");
             }
 
@@ -65,7 +64,7 @@ namespace MiniaturesRUs.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Miniature miniature = db.Minitures.Find(id);
+            Miniature miniature = MiniatureDB.GetMiniatureById(id);
             if (miniature == null)
             {
                 return HttpNotFound();
@@ -82,8 +81,7 @@ namespace MiniaturesRUs.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(miniature).State = EntityState.Modified;
-                db.SaveChanges();
+                MiniatureDB.UpdateMiniature(miniature);
                 return RedirectToAction("Index");
             }
             return View(miniature);
@@ -96,7 +94,7 @@ namespace MiniaturesRUs.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Miniature miniature = db.Minitures.Find(id);
+            Miniature miniature = MiniatureDB.GetMiniatureById(id);
             if (miniature == null)
             {
                 return HttpNotFound();
@@ -109,9 +107,8 @@ namespace MiniaturesRUs.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Miniature miniature = db.Minitures.Find(id);
-            db.Minitures.Remove(miniature);
-            db.SaveChanges();
+            Miniature miniature = MiniatureDB.GetMiniatureById(id);
+            MiniatureDB.DeleteMiniature(miniature);
             return RedirectToAction("Index");
         }
 
