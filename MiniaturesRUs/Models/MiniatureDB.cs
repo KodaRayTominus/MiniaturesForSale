@@ -14,6 +14,14 @@ namespace MiniaturesRUs.Models
             return db.Minitures.Find(id);
         }
 
+        public static void AddMiniatureToDB(Miniature mini)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+
+            db.Minitures.Add(mini);
+            db.SaveChanges();
+        }
+
 
 
     }
