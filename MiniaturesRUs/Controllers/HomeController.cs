@@ -15,7 +15,7 @@ namespace MiniaturesRUs.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "The Goal of this Website is to create an intuitive marketplace for people with the passion for Miniatures to come together and share and trade ideas while also selling their own master pieces.";
 
             return View();
         }
