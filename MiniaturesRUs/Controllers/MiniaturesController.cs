@@ -27,7 +27,7 @@ namespace MiniaturesRUs.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Miniature miniature = db.Minitures.Find(id);
+            Miniature miniature = MiniatureDB.GetMiniatureById(id);
             if (miniature == null)
             {
                 return HttpNotFound();

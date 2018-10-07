@@ -7,7 +7,7 @@ namespace MiniaturesRUs.Models
 {
     public static class MiniatureDB
     {
-        public static Miniature GetMiniatureById(int id)
+        public static Miniature GetMiniatureById(int? id)
         {
             ApplicationDbContext db = new ApplicationDbContext();
 
