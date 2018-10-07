@@ -21,7 +21,7 @@ namespace MiniaturesRUs.Models
         public string Description { get; set; }
 
         [Required]
-        public DateTime Year { get; set; }
+        public int Year { get; set; }
 
         [Required]
         public string GameName { get; set; }
@@ -45,40 +45,40 @@ namespace MiniaturesRUs.Models
         {
         }
 
-        public Miniature(string name, double price, string description, DateTime year, string gameName, string faction)
+        public Miniature(string name, double price, string description, int year, string gameName, string faction)
             : this(name, price, description, year, gameName, faction, 'x', 0, 0, 0, 0, 0)
         {
         }
 
-        public Miniature(string name, double price, string description, DateTime year, string gameName, string faction, char? size)
+        public Miniature(string name, double price, string description, int year, string gameName, string faction, char? size)
             : this(name, price, description, year, gameName, faction, size, 0, 0, 0, 0, 0)
         {
         }
 
-        public Miniature(string name, double price, string description, DateTime year, string gameName, string faction, char? size, int? speed)
+        public Miniature(string name, double price, string description, int year, string gameName, string faction, char? size, int? speed)
             : this(name, price, description, year, gameName, faction, size, speed, 0, 0, 0, 0)
         {
         }
 
-        public Miniature(string name, double price, string description, DateTime year, string gameName, string faction, char? size, int? speed,
+        public Miniature(string name, double price, string description, int year, string gameName, string faction, char? size, int? speed,
                         int? attack)
             : this(name, price, description, year, gameName, faction, size, speed, attack, 0, 0, 0)
         {
         }
 
-        public Miniature(string name, double price, string description, DateTime year, string gameName, string faction, char? size, int? speed,
+        public Miniature(string name, double price, string description, int year, string gameName, string faction, char? size, int? speed,
                         int? attack, int? strength)
             : this(name, price, description, year, gameName, faction, size, speed, attack, strength, 0, 0)
         {
         }
 
-        public Miniature(string name, double price, string description, DateTime year, string gameName, string faction, char? size, int? speed,
+        public Miniature(string name, double price, string description, int year, string gameName, string faction, char? size, int? speed,
                         int? attack, int? strength, int? hitPoints)
             : this(name, price, description, year, gameName, faction, size, speed, attack, strength, hitPoints, 0)
         {
         }
 
-        public Miniature(string name, double price, string description, DateTime year, string gameName, string faction, char? size, int? speed, 
+        public Miniature(string name, double price, string description, int year, string gameName, string faction, char? size, int? speed, 
                         int? attack, int? strength, int? hitPoints, int? defense)
         {
             Name = name;
