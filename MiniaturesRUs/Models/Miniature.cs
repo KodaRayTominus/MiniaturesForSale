@@ -21,9 +21,6 @@ namespace MiniaturesRUs.Models
         public string Description { get; set; }
 
         [Required]
-        public int Year { get; set; }
-
-        [Required]
         public string GameName { get; set; }
 
         [Required]
@@ -84,7 +81,7 @@ namespace MiniaturesRUs.Models
             Name = name;
             Price = price;
             Description = description;
-            Year = year;
+            //Year = year;
             GameName = gameName;
             Faction = faction;
             Size = size;

@@ -25,7 +25,7 @@ namespace MiniaturesRUs.Models.Tests
 
             string description = "This is a description";
 
-            DateTime year = 1992;
+            int year = 1992;
 
             string gameName = "testGame";
 
