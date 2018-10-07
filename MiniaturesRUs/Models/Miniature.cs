@@ -46,6 +46,40 @@ namespace MiniaturesRUs.Models
         }
 
         public Miniature(string name, double price, string description, DateTime year, string gameName, string faction)
+            : this(name, price, description, year, gameName, faction, 'x', 0, 0, 0, 0, 0)
+        {
+        }
+
+        public Miniature(string name, double price, string description, DateTime year, string gameName, string faction, char? size)
+            : this(name, price, description, year, gameName, faction, size, 0, 0, 0, 0, 0)
+        {
+        }
+
+        public Miniature(string name, double price, string description, DateTime year, string gameName, string faction, char? size, int? speed)
+            : this(name, price, description, year, gameName, faction, size, speed, 0, 0, 0, 0)
+        {
+        }
+
+        public Miniature(string name, double price, string description, DateTime year, string gameName, string faction, char? size, int? speed,
+                        int? attack)
+            : this(name, price, description, year, gameName, faction, size, speed, attack, 0, 0, 0)
+        {
+        }
+
+        public Miniature(string name, double price, string description, DateTime year, string gameName, string faction, char? size, int? speed,
+                        int? attack, int? strength)
+            : this(name, price, description, year, gameName, faction, size, speed, attack, strength, 0, 0)
+        {
+        }
+
+        public Miniature(string name, double price, string description, DateTime year, string gameName, string faction, char? size, int? speed,
+                        int? attack, int? strength, int? hitPoints)
+            : this(name, price, description, year, gameName, faction, size, speed, attack, strength, hitPoints, 0)
+        {
+        }
+
+        public Miniature(string name, double price, string description, DateTime year, string gameName, string faction, char? size, int? speed, 
+                        int? attack, int? strength, int? hitPoints, int? defense)
         {
             Name = name;
             Price = price;
@@ -53,48 +87,13 @@ namespace MiniaturesRUs.Models
             Year = year;
             GameName = gameName;
             Faction = faction;
-        }
-
-        public Miniature( string name, double price, string description, DateTime year, string gameName, 
-                        string faction, char size) 
-            : this(name, price, description, year, gameName, faction)
-        {
             Size = size;
-        }
-
-        public Miniature(string name, double price, string description, DateTime year, string gameName, 
-                        string faction, char size, int speed) 
-            : this( name, price, description, year, gameName, faction, size)
-        {
             Speed = speed;
-        }
-
-        public Miniature(string name, double price, string description, DateTime year, string gameName, 
-                        string faction, char size, int speed, int attack) 
-            : this(name, price, description, year, gameName, faction, size, speed)
-        {
             Attack = attack;
-        }
-
-        public Miniature(string name, double price, string description, DateTime year, string gameName, 
-                        string faction, char size, int speed, int attack, int strength) 
-            : this(name, price, description, year, gameName, faction, size, speed, attack)
-        {
             Strength = strength;
-        }
-
-        public Miniature(string name, double price, string description, DateTime year, string gameName, 
-                        string faction, char size, int speed, int attack, int strength, int hitPoints) 
-            : this(name, price, description, year, gameName, faction, size, speed, attack, strength)
-        {
             HitPoints = hitPoints;
-        }
-
-        public Miniature(string name, double price, string description, DateTime year, string gameName, 
-                        string faction, char size, int speed, int attack, int strength, int hitPoints, int defense) 
-            : this(name, price, description, year, gameName, faction, size, speed, attack, strength, hitPoints)
-        {
             Defense = defense;
         }
+
     }
 }
