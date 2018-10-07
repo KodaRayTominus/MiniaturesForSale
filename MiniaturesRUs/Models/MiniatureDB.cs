@@ -31,6 +31,14 @@ namespace MiniaturesRUs.Models
             db.SaveChanges();
         }
 
+        public static void DeleteMiniature(Miniature miniature)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+
+            db.Minitures.Remove(miniature);
+            db.SaveChanges();
+        }
+
 
 
     }

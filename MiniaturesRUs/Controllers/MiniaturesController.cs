@@ -107,9 +107,8 @@ namespace MiniaturesRUs.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Miniature miniature = db.Minitures.Find(id);
-            db.Minitures.Remove(miniature);
-            db.SaveChanges();
+            Miniature miniature = MiniatureDB.GetMiniatureById(id);
+            MiniatureDB.DeleteMiniature(miniature);
             return RedirectToAction("Index");
         }
 
