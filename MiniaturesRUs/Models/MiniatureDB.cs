@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -19,6 +20,14 @@ namespace MiniaturesRUs.Models
             ApplicationDbContext db = new ApplicationDbContext();
 
             db.Minitures.Add(mini);
+            db.SaveChanges();
+        }
+
+        public static void UpdateMiniature(Miniature miniature)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+
+            db.Entry(miniature).State = EntityState.Modified;
             db.SaveChanges();
         }
 

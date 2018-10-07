@@ -81,8 +81,7 @@ namespace MiniaturesRUs.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(miniature).State = EntityState.Modified;
-                db.SaveChanges();
+                MiniatureDB.UpdateMiniature(miniature);
                 return RedirectToAction("Index");
             }
             return View(miniature);
@@ -95,7 +94,7 @@ namespace MiniaturesRUs.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Miniature miniature = db.Minitures.Find(id);
+            Miniature miniature = MiniatureDB.GetMiniatureById(id);
             if (miniature == null)
             {
                 return HttpNotFound();
