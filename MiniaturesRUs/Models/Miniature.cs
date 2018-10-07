@@ -29,17 +29,17 @@ namespace MiniaturesRUs.Models
         [Required]
         public string Faction { get; set; }
 
-        public char Size { get; set; }
+        public char? Size { get; set; }
 
-        public int Speed { get; set; }
+        public int? Speed { get; set; }
 
-        public int Attack { get; set; }
+        public int? Attack { get; set; }
 
-        public int Strength { get; set; }
+        public int? Strength { get; set; }
 
-        public int HitPoints { get; set; }
+        public int? HitPoints { get; set; }
 
-        public int Defense { get; set; }
+        public int? Defense { get; set; }
 
         public Miniature()
         {
