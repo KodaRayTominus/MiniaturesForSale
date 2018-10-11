@@ -208,6 +208,10 @@
     <Compile Include="Migrations\201810070450169_addedYearIntToTable.Designer.cs">
       <DependentUpon>201810070450169_addedYearIntToTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810110650108_AddedPersonClass.cs" />
+    <Compile Include="Migrations\201810110650108_AddedPersonClass.Designer.cs">
+      <DependentUpon>201810110650108_AddedPersonClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -307,6 +311,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810070450169_addedYearIntToTable.resx">
       <DependentUpon>201810070450169_addedYearIntToTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810110650108_AddedPersonClass.resx">
+      <DependentUpon>201810110650108_AddedPersonClass.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
