@@ -197,6 +197,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -208,12 +209,18 @@
     <Compile Include="Migrations\201810070450169_addedYearIntToTable.Designer.cs">
       <DependentUpon>201810070450169_addedYearIntToTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810110650108_AddedPersonClass.cs" />
+    <Compile Include="Migrations\201810110650108_AddedPersonClass.Designer.cs">
+      <DependentUpon>201810110650108_AddedPersonClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Miniature.cs" />
     <Compile Include="Models\MiniatureDB.cs" />
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\PersonDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Controllers\MiniaturesController.cs" />
@@ -282,6 +289,11 @@
     <Content Include="Views\Miniatures\Details.cshtml" />
     <Content Include="Views\Miniatures\Edit.cshtml" />
     <Content Include="Views\Miniatures\Index.cshtml" />
+    <Content Include="Views\People\Create.cshtml" />
+    <Content Include="Views\People\Delete.cshtml" />
+    <Content Include="Views\People\Details.cshtml" />
+    <Content Include="Views\People\Edit.cshtml" />
+    <Content Include="Views\People\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -305,6 +317,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810070450169_addedYearIntToTable.resx">
       <DependentUpon>201810070450169_addedYearIntToTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810110650108_AddedPersonClass.resx">
+      <DependentUpon>201810110650108_AddedPersonClass.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

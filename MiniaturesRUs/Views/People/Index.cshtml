@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MiniaturesRUs.Models.Person>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Personid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Personid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Personid })
+        </td>
+    </tr>
+}
+
+</table>
