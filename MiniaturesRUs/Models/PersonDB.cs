@@ -6,7 +6,7 @@ using System.Web;
 
 namespace MiniaturesRUs.Models
 {
-    public class PersonDB
+    public static class PersonDB
     {
         public static Person GetPersonById(int? id)
         {

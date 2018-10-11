@@ -27,7 +27,7 @@ namespace MiniaturesRUs.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Person person = db.People.Find(id);
+            Person person = PersonDB.GetPersonById(id);
             if (person == null)
             {
                 return HttpNotFound();
@@ -50,8 +50,7 @@ namespace MiniaturesRUs.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.People.Add(person);
-                db.SaveChanges();
+                PersonDB.AddPersonToDB(person);
                 return RedirectToAction("Index");
             }
 
@@ -65,7 +64,7 @@ namespace MiniaturesRUs.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Person person = db.People.Find(id);
+            Person person = PersonDB.GetPersonById(id);
             if (person == null)
             {
                 return HttpNotFound();
@@ -82,8 +81,7 @@ namespace MiniaturesRUs.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(person).State = EntityState.Modified;
-                db.SaveChanges();
+                PersonDB.UpdatePerson(person);
                 return RedirectToAction("Index");
             }
             return View(person);
@@ -96,7 +94,7 @@ namespace MiniaturesRUs.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Person person = db.People.Find(id);
+            Person person = PersonDB.GetPersonById(id);
             if (person == null)
             {
                 return HttpNotFound();
@@ -109,9 +107,8 @@ namespace MiniaturesRUs.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Person person = db.People.Find(id);
-            db.People.Remove(person);
-            db.SaveChanges();
+            Person person = PersonDB.GetPersonById(id);
+            PersonDB.DeletePerson(person);
             return RedirectToAction("Index");
         }
 
