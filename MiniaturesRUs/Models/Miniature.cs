@@ -9,7 +9,7 @@ namespace MiniaturesRUs.Models
     public class Miniature
     {
         [Key]
-        public int Miniid { get; set; }
+        public int MiniId { get; set; }
 
         [Required]
         public string Name { get; set; }
