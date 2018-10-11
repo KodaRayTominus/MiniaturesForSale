@@ -219,6 +219,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Miniature.cs" />
     <Compile Include="Models\MiniatureDB.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\PersonDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
