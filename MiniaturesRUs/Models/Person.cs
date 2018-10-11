@@ -12,30 +12,21 @@ namespace MiniaturesRUs.Models
         [Key]
         public int Personid { get; set; }
 
-        private string Name { get; set; }
+        public string Name { get; set; }
 
-        private string Address { get; set; }
+        public string Address { get; set; }
 
-        private string UserName { get; set; }
+        [Required]
+        public string UserName { get; set; }
 
-        private int AccountId { get; set; }
+        public int? AccountId { get; set; }
 
         public Person()
         {
         }
 
-        public Person(string name)
-            : this(name, "", "", 0)
-        {
-        }
-
-        public Person(string name, string address)
-            : this(name, address, "", 0)
-        {
-        }
-
-        public Person(string name, string address, string userName)
-            : this(name, address, userName, 0)
+        public Person(string name, string userName, int accountId)
+            : this(name, "", userName,accountId)
         {
         }
 
