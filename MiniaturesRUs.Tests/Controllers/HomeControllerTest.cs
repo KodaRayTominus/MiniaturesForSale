@@ -35,7 +35,7 @@ namespace MiniaturesRUs.Tests.Controllers
             ViewResult result = controller.About() as ViewResult;
 
             // Assert
-            Assert.AreEqual("Your application description page.", result.ViewBag.Message);
+            Assert.AreEqual("The Goal of this Website is to create an intuitive marketplace for people with the passion for Miniatures to come together and share and trade ideas while also selling their own master pieces.", result.ViewBag.Message);
         }
 
         [TestMethod]
