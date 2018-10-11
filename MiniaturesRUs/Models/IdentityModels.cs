@@ -28,7 +28,7 @@ namespace MiniaturesRUs.Models
         // public virtual DbSet<MyEntity> MyEntities { get; set; }
         public virtual DbSet<Miniature> Minitures { get; set; }
 
-        public virtual DbSet<Person> Persons { get; set; }
+        public virtual DbSet<Person> People { get; set; }
 
         public static ApplicationDbContext Create()
         {
