@@ -12,9 +12,33 @@ namespace MiniaturesRUs.Models.Tests
     public class PersonTests
     {
         [TestMethod()]
-        public void PersonTest()
+        public void Person_CreatePerson_CreatePersonWithDefaultValues()
         {
-            Assert.Fail();
+            //arrange
+
+            //act
+
+            //assert
+        }
+
+        [TestMethod()]
+        public void Person_CreatePerson_CreateNullPerson()
+        {
+            //arrange
+
+            //act
+
+            //assert
+        }
+
+        [TestMethod()]
+        public void Person_CreatePerson_CreatePersonWithAllParameters()
+        {
+            //arrange
+
+            //act
+
+            //assert
         }
     }
 }

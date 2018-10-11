@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,6 +8,8 @@ namespace MiniaturesRUs.Models
 {
     public class Person
     {
+
+        [Key]
         public int Personid { get; set; }
 
         private string Name { get; set; }
@@ -21,29 +24,23 @@ namespace MiniaturesRUs.Models
         {
         }
 
-        public Person(int personid)
-            : this(personid, "", "", "", 0)
+        public Person(string name)
+            : this(name, "", "", 0)
         {
         }
 
-        public Person(int personid, string name)
-            : this(personid, name, "", "", 0)
+        public Person(string name, string address)
+            : this(name, address, "", 0)
         {
         }
 
-        public Person(int personid, string name, string address)
-            : this(personid, name, address, "", 0)
+        public Person(string name, string address, string userName)
+            : this(name, address, userName, 0)
         {
         }
 
-        public Person(int personid, string name, string address, string userName)
-            : this(personid, name, address, userName, 0)
+        public Person(string name, string address, string userName, int accountId)
         {
-        }
-
-        public Person(int personid, string name, string address, string userName, int accountId)
-        {
-            Personid = personid;
             Name = name;
             Address = address;
             UserName = userName;
