@@ -7,5 +7,10 @@ namespace MiniaturesRUs.Models
 {
     public class Person
     {
+
+
+        public Person()
+        {
+        }
     }
 }
