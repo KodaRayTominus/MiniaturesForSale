@@ -22,29 +22,23 @@ namespace MiniaturesRUs.Models
         }
 
         public Person(int personid)
+            : this(personid, "", "", "", 0)
         {
-            Personid = personid;
         }
 
         public Person(int personid, string name)
+            : this(personid, name, "", "", 0)
         {
-            Personid = personid;
-            Name = name;
         }
 
         public Person(int personid, string name, string address)
+            : this(personid, name, address, "", 0)
         {
-            Personid = personid;
-            Name = name;
-            Address = address;
         }
 
         public Person(int personid, string name, string address, string userName)
+            : this(personid, name, address, userName, 0)
         {
-            Personid = personid;
-            Name = name;
-            Address = address;
-            UserName = userName;
         }
 
         public Person(int personid, string name, string address, string userName, int accountId)
