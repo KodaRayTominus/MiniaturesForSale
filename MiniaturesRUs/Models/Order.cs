@@ -10,11 +10,11 @@ namespace MiniaturesRUs.Models
     {
         public int OrderId { get; set; }
 
-        [ForeignKey("People")]
+        [ForeignKey("Person")]
         [Column(Order = 1)]
         public int BuyerId { get; set; }
 
-        [ForeignKey("People")]
+        [ForeignKey("Person")]
         [Column(Order = 2)]
         public int SellerId { get; set; }
 
