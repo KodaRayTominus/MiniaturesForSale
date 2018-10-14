@@ -36,7 +36,7 @@ namespace MiniaturesRUs.Migrations
                     })
                 .PrimaryKey(t => t.OrderId)
                 .ForeignKey("dbo.People", t => t.BuyerId, cascadeDelete: true)
-                .ForeignKey("dbo.People", t => t.SellerId, cascadeDelete: true)
+                .ForeignKey("dbo.People", t => t.SellerId, cascadeDelete: false )
                 .Index(t => t.BuyerId)
                 .Index(t => t.SellerId);
             
