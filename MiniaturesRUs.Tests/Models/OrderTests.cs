@@ -12,9 +12,34 @@ namespace MiniaturesRUs.Models.Tests
     public class OrderTests
     {
         [TestMethod()]
-        public void OrderTest()
+        public void Order_CreateOrder_CreatesOrderWithAllParameters()
         {
-            Assert.Fail();
+            //arrange
+            int salesPersonId = 1;
+            int salesPersonIdToTest = 1;
+
+            int buyerPersonId = 15;
+            int buyerPersonIdToTest = 15;
+
+            //act
+            Order testOrder = new Order(buyerPersonId, salesPersonId);
+
+            //assert
+            Assert.AreEqual(salesPersonIdToTest, testOrder.SellerId);
+            Assert.AreEqual(buyerPersonIdToTest, testOrder.BuyerId);
         }
+
+        [TestMethod()]
+        public void Order_CreateOrder_CreatesNullOrder()
+        {
+
+            //act
+            Order tester = new Order();
+
+            //assert
+            Assert.AreEqual(null, tester.SellerId);
+            Assert.AreEqual(null, tester.BuyerId);
+        }
+
     }
 }
