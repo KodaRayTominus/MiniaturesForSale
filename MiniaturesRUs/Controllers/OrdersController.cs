@@ -28,7 +28,7 @@ namespace MiniaturesRUs.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Orders.Find(id);
+            Order order = OrdersDB.GetOrderById(id);
             if (order == null)
             {
                 return HttpNotFound();
@@ -53,8 +53,7 @@ namespace MiniaturesRUs.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Orders.Add(order);
-                db.SaveChanges();
+                OrdersDB.AddOrderToDB(order);
                 return RedirectToAction("Index");
             }
 
@@ -70,7 +69,7 @@ namespace MiniaturesRUs.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Orders.Find(id);
+            Order order = OrdersDB.GetOrderById(id);
             if (order == null)
             {
                 return HttpNotFound();
@@ -89,8 +88,7 @@ namespace MiniaturesRUs.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(order).State = EntityState.Modified;
-                db.SaveChanges();
+                OrdersDB.UpdateOrder(order);
                 return RedirectToAction("Index");
             }
             ViewBag.BuyerId = new SelectList(db.People, "PersonId", "Name", order.BuyerId);
@@ -105,7 +103,7 @@ namespace MiniaturesRUs.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Orders.Find(id);
+            Order order = OrdersDB.GetOrderById(id);
             if (order == null)
             {
                 return HttpNotFound();
@@ -118,9 +116,8 @@ namespace MiniaturesRUs.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Order order = db.Orders.Find(id);
-            db.Orders.Remove(order);
-            db.SaveChanges();
+            Order order = OrdersDB.GetOrderById(id);
+            OrdersDB.DeleteOrder(order);
             return RedirectToAction("Index");
         }
 

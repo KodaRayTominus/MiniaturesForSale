@@ -28,7 +28,7 @@ namespace MiniaturesRUs.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ProductOrder productOrder = db.ProductOrders.Find(id);
+            ProductOrder productOrder = ProductOrderDB.GetProductOrderById(id);
             if (productOrder == null)
             {
                 return HttpNotFound();
@@ -53,8 +53,7 @@ namespace MiniaturesRUs.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.ProductOrders.Add(productOrder);
-                db.SaveChanges();
+                ProductOrderDB.AddProductOrderToDB(productOrder);
                 return RedirectToAction("Index");
             }
 
@@ -70,7 +69,7 @@ namespace MiniaturesRUs.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ProductOrder productOrder = db.ProductOrders.Find(id);
+            ProductOrder productOrder = ProductOrderDB.GetProductOrderById(id);
             if (productOrder == null)
             {
                 return HttpNotFound();
@@ -89,8 +88,7 @@ namespace MiniaturesRUs.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(productOrder).State = EntityState.Modified;
-                db.SaveChanges();
+                ProductOrderDB.UpdateProductOrder(productOrder);
                 return RedirectToAction("Index");
             }
             ViewBag.ProductId = new SelectList(db.Minitures, "MiniId", "Name", productOrder.ProductId);
@@ -105,7 +103,7 @@ namespace MiniaturesRUs.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ProductOrder productOrder = db.ProductOrders.Find(id);
+            ProductOrder productOrder = ProductOrderDB.GetProductOrderById(id);
             if (productOrder == null)
             {
                 return HttpNotFound();
@@ -118,9 +116,8 @@ namespace MiniaturesRUs.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ProductOrder productOrder = db.ProductOrders.Find(id);
-            db.ProductOrders.Remove(productOrder);
-            db.SaveChanges();
+            ProductOrder productOrder = ProductOrderDB.GetProductOrderById(id);
+            ProductOrderDB.DeleteProductOrder(productOrder);
             return RedirectToAction("Index");
         }
 
