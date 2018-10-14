@@ -203,10 +203,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201810140215297_OrderAndOrderDBHelperAdded.cs" />
-    <Compile Include="Migrations\201810140215297_OrderAndOrderDBHelperAdded.Designer.cs">
-      <DependentUpon>201810140215297_OrderAndOrderDBHelperAdded.cs</DependentUpon>
-
+    <Compile Include="Migrations\201810140352319_initial.cs" />
+    <Compile Include="Migrations\201810140352319_initial.Designer.cs">
+      <DependentUpon>201810140352319_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -322,9 +321,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201810140215297_OrderAndOrderDBHelperAdded.resx">
-      <DependentUpon>201810140215297_OrderAndOrderDBHelperAdded.cs</DependentUpon>
-
+    <EmbeddedResource Include="Migrations\201810140352319_initial.resx">
+      <DependentUpon>201810140352319_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

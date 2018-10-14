@@ -11,7 +11,7 @@ namespace MiniaturesRUs.Migrations
                 "dbo.Miniatures",
                 c => new
                     {
-                        Miniid = c.Int(nullable: false, identity: true),
+                        MiniId = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false),
                         Price = c.Double(nullable: false),
                         Description = c.String(nullable: false),
@@ -24,19 +24,46 @@ namespace MiniaturesRUs.Migrations
                         HitPoints = c.Int(),
                         Defense = c.Int(),
                     })
-                .PrimaryKey(t => t.Miniid);
+                .PrimaryKey(t => t.MiniId);
+            
+            CreateTable(
+                "dbo.Orders",
+                c => new
+                    {
+                        OrderId = c.Int(nullable: false, identity: true),
+                        BuyerId = c.Int(),
+                        SellerId = c.Int(),
+                    })
+                .PrimaryKey(t => t.OrderId)
+                .ForeignKey("dbo.People", t => t.BuyerId)
+                .ForeignKey("dbo.People", t => t.SellerId)
+                .Index(t => t.BuyerId)
+                .Index(t => t.SellerId);
             
             CreateTable(
                 "dbo.People",
                 c => new
                     {
-                        Personid = c.Int(nullable: false, identity: true),
+                        PersonId = c.Int(nullable: false, identity: true),
                         Name = c.String(),
                         Address = c.String(),
                         UserName = c.String(nullable: false),
                         AccountId = c.Int(),
                     })
-                .PrimaryKey(t => t.Personid);
+                .PrimaryKey(t => t.PersonId);
+            
+            CreateTable(
+                "dbo.ProductOrders",
+                c => new
+                    {
+                        OrderId = c.Int(nullable: false),
+                        ProductId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.OrderId, t.ProductId })
+                .ForeignKey("dbo.Miniatures", t => t.ProductId, cascadeDelete: true)
+                .ForeignKey("dbo.Orders", t => t.OrderId, cascadeDelete: true)
+                .Index(t => t.OrderId)
+                .Index(t => t.ProductId);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -114,18 +141,28 @@ namespace MiniaturesRUs.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.ProductOrders", "OrderId", "dbo.Orders");
+            DropForeignKey("dbo.ProductOrders", "ProductId", "dbo.Miniatures");
+            DropForeignKey("dbo.Orders", "SellerId", "dbo.People");
+            DropForeignKey("dbo.Orders", "BuyerId", "dbo.People");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.ProductOrders", new[] { "ProductId" });
+            DropIndex("dbo.ProductOrders", new[] { "OrderId" });
+            DropIndex("dbo.Orders", new[] { "SellerId" });
+            DropIndex("dbo.Orders", new[] { "BuyerId" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.ProductOrders");
             DropTable("dbo.People");
+            DropTable("dbo.Orders");
             DropTable("dbo.Miniatures");
         }
     }

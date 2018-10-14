@@ -7,13 +7,13 @@ namespace MiniaturesRUs.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class OrderAndOrderDBHelperAdded : IMigrationMetadata
+    public sealed partial class initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(OrderAndOrderDBHelperAdded));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201810140215297_OrderAndOrderDBHelperAdded"; }
+            get { return "201810140352319_initial"; }
         }
         
         string IMigrationMetadata.Source
