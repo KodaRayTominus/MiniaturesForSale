@@ -13,13 +13,17 @@ namespace MiniaturesRUs.Models
         [Column(Order = 1)]
         public int OrderId { get; set; }
 
-        [ForeignKey("PersonId")]
+        [ForeignKey("Person")]
         [Column(Order = 2)]
         public int BuyerId { get; set; }
 
-        [ForeignKey("PersonId")]
+        [ForeignKey("Person2")]
         [Column(Order = 3)]
         public int SellerId { get; set; }
+
+        public Person Person { get; set; }
+
+        public Person Person2 { get; set; }
 
         public Order()
         {

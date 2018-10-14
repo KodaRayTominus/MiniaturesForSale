@@ -9,15 +9,20 @@ namespace MiniaturesRUs.Models
 {
     public class ProductOrder
     {
-
-        [ForeignKey("OrderId")]
+        [Key]
+        [ForeignKey("Order")]
         [Column(Order = 1)]
         public int OrderId { get; set; }
 
 
-        [ForeignKey("MiniId")]
+        [Key]
+        [ForeignKey("Miniature")]
         [Column(Order = 2)]
         public int ProductId { get; set; }
+
+        public Order Order { get; set; }
+
+        public Miniature Miniature { get; set; }
 
         public ProductOrder()
         {

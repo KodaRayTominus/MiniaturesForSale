@@ -201,17 +201,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201810070449174_dropYear.cs" />
-    <Compile Include="Migrations\201810070449174_dropYear.Designer.cs">
-      <DependentUpon>201810070449174_dropYear.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810070450169_addedYearIntToTable.cs" />
-    <Compile Include="Migrations\201810070450169_addedYearIntToTable.Designer.cs">
-      <DependentUpon>201810070450169_addedYearIntToTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810110650108_AddedPersonClass.cs" />
-    <Compile Include="Migrations\201810110650108_AddedPersonClass.Designer.cs">
-      <DependentUpon>201810110650108_AddedPersonClass.cs</DependentUpon>
+    <Compile Include="Migrations\201810140215297_OrderAndOrderDBHelperAdded.cs" />
+    <Compile Include="Migrations\201810140215297_OrderAndOrderDBHelperAdded.Designer.cs">
+      <DependentUpon>201810140215297_OrderAndOrderDBHelperAdded.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -314,14 +306,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201810070449174_dropYear.resx">
-      <DependentUpon>201810070449174_dropYear.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810070450169_addedYearIntToTable.resx">
-      <DependentUpon>201810070450169_addedYearIntToTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810110650108_AddedPersonClass.resx">
-      <DependentUpon>201810110650108_AddedPersonClass.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201810140215297_OrderAndOrderDBHelperAdded.resx">
+      <DependentUpon>201810140215297_OrderAndOrderDBHelperAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
