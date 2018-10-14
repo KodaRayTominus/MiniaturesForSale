@@ -206,6 +206,7 @@
     <Compile Include="Migrations\201810140215297_OrderAndOrderDBHelperAdded.cs" />
     <Compile Include="Migrations\201810140215297_OrderAndOrderDBHelperAdded.Designer.cs">
       <DependentUpon>201810140215297_OrderAndOrderDBHelperAdded.cs</DependentUpon>
+
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -237,6 +238,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\PublishProfiles\TheMiniatureMan - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -322,6 +324,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201810140215297_OrderAndOrderDBHelperAdded.resx">
       <DependentUpon>201810140215297_OrderAndOrderDBHelperAdded.cs</DependentUpon>
+
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
