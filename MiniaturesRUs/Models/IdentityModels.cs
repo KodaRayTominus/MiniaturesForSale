@@ -30,6 +30,10 @@ namespace MiniaturesRUs.Models
 
         public virtual DbSet<Person> People { get; set; }
 
+        public virtual DbSet<Order> Orders { get; set; }
+
+        public virtual DbSet<ProductOrder> ProductOrders { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
