@@ -203,6 +203,10 @@
     <Compile Include="Migrations\201810140352319_initial.Designer.cs">
       <DependentUpon>201810140352319_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810160616509_UpdatedPersonClass.cs" />
+    <Compile Include="Migrations\201810160616509_UpdatedPersonClass.Designer.cs">
+      <DependentUpon>201810160616509_UpdatedPersonClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -352,6 +356,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201810140352319_initial.resx">
       <DependentUpon>201810140352319_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810160616509_UpdatedPersonClass.resx">
+      <DependentUpon>201810160616509_UpdatedPersonClass.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
