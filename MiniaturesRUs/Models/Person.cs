@@ -70,6 +70,11 @@ namespace MiniaturesRUs.Models
         public string PastExperience { get; set; }
 
         /// <summary>
+        /// List of different expertise
+        /// </summary>
+        public List<string> Expertise { get; set; }
+
+        /// <summary>
         /// Miniatures that the person is interested in buying
         /// </summary>
         public List<int> WishList { get; set; }
