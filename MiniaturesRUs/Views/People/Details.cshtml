@@ -8,150 +8,180 @@
 }
 <h2>Details</h2>
 
-<div class="container emp-profile">
-    <form method="post">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="profile-img">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="" />
-                    <div class="file btn btn-lg btn-primary">
-                        Change Photo
-                        <input type="file" name="file" />
+<!-- nav bar -->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <a href="mail-compose.html" class="btn btn-danger btn-block btn-compose-email">Compose Email</a>
+            <ul class="nav nav-pills nav-stacked nav-email shadow mb-20">
+                <li class="active">
+                    <a href="#mail-inbox.html">
+                        <i class="fa fa-inbox"></i> Inbox  <span class="label pull-right">7</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#mail-compose.html"><i class="fa fa-envelope-o"></i> Send Mail</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-certificate"></i> Important</a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-file-text-o"></i> Drafts <span class="label label-info pull-right inbox-notification">35</span>
+                    </a>
+                </li>
+                <li><a href="#"> <i class="fa fa-trash-o"></i> Trash</a></li>
+            </ul><!-- /.nav -->
+            <h5 class="nav-email-subtitle">More</h5>
+            <ul class="nav nav-pills nav-stacked nav-email mb-20 rounded shadow">
+                <li>
+                    <a href="#">
+                        <i class="fa fa-folder-open"></i> Orders  <span class="label label-danger pull-right">3</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-folder-open"></i> Owned
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-folder-open"></i> Wish list
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-folder-open"></i> Watch List
+                    </a>
+                </li>
+            </ul><!-- /.nav -->
+        </div>
+        <div class="col-sm-9">
+
+            <!-- resumt -->
+            <div class="panel panel-default">
+                <div class="panel-heading resume-heading">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="col-xs-12 col-sm-4">
+                                <figure>
+                                    <img class="img-circle img-responsive" alt="" src="http://placehold.it/300x300">
+                                </figure>
+                                <div class="row">
+                                    <div class="col-xs-12 social-btns">
+                                        <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
+                                            <a href="#" class="btn btn-social btn-block btn-google">
+                                                <i class="fa fa-google"></i>
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
+                                            <a href="#" class="btn btn-social btn-block btn-facebook">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
+                                            <a href="#" class="btn btn-social btn-block btn-twitter">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
+                                            <a href="#" class="btn btn-social btn-block btn-linkedin">
+                                                <i class="fa fa-linkedin"></i>
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
+                                            <a href="#" class="btn btn-social btn-block btn-github">
+                                                <i class="fa fa-github"></i>
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
+                                            <a href="#" class="btn btn-social btn-block btn-stackoverflow">
+                                                <i class="fa fa-stack-overflow"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-8">
+                                <ul class="list-group">
+                                    <li class="list-group-item">@Model.UserName</li>
+                                    @if (Model.FavoriteGame != null)
+                                    {
+                                        <li class="list-group-item">@Model.FavoriteGame</li>
+
+                                    }
+                                    @if (Model.NickName != null)
+                                    {
+                                        <li class="list-group-item">@Model.NickName</li>
+
+                                    }
+                                    @if (Model.PhoneNumber != null)
+                                    {
+                                        <li class="list-group-item"><i class="fa fa-phone"></i> @Model.PhoneNumber </li>
+
+                                    }
+                                    <li class="list-group-item"><i class="fa fa-envelope"></i> john@example.com</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="profile-head">
-                    <h5>
-                        Kshiti Ghelani
-                    </h5>
-                    <h6>
-                        Web Developer and Designer
-                    </h6>
-                    <p class="proile-rating">RANKINGS : <span>8/10</span></p>
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
-                        </li>
-                    </ul>
+                <div class="bs-callout bs-callout-danger">
+                    @if (Model.Bio != null)
+                    {
+                        <h4>Bio</h4>
+                        <p>
+                            @Model.Bio
+                        </p>
+                    }
                 </div>
-            </div>
-            <div class="col-md-2">
-                <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
+                <div class="bs-callout bs-callout-danger">
+                    @if (Model.FactionFanFiction != null)
+                    {
+                        <h4>Fan Fiction Faction Background</h4>
+                        <p>
+                            @Model.FactionFanFiction
+                        </p>
+                    }
+
+                </div>
+                <div class="bs-callout bs-callout-danger">
+                    @if (Model.PastExperience != null)
+                    {
+                        <h4>Prior Experiences</h4>
+                        <ul class="list-group">
+                            <a class="list-group-item inactive-link" href="#">
+                                <h4 class="list-group-item-heading">
+                                    What I've done
+                                </h4>
+                                <p class="list-group-item-text">
+                                    @Model.PastExperience
+                                </p>
+                            </a>]
+                        </ul>
+                    }
+                </div>
+                <div class="bs-callout bs-callout-danger">
+                    @if (Model.Expertise != null)
+                    {
+                        <h4>Key Expertise</h4>
+                        <ul class="list-group">
+                            @foreach (string expertise in Model.Expertise)
+                            {
+                                <li class="list-group-item">@expertise</li>
+                            }
+                        </ul>
+                    }
+
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="profile-work">
-                    <p>WORK LINK</p>
-                    <a href="">Website Link</a><br />
-                    <a href="">Bootsnipp Profile</a><br />
-                    <a href="">Bootply Profile</a>
-                    <p>SKILLS</p>
-                    <a href="">Web Designer</a><br />
-                    <a href="">Web Developer</a><br />
-                    <a href="">WordPress</a><br />
-                    <a href="">WooCommerce</a><br />
-                    <a href="">PHP, .Net</a><br />
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="tab-content profile-tab" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>User Id</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>Kshiti123</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Name</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>Kshiti Ghelani</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Email</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>kshitighelani@gmail.com</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Phone</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>123 456 7890</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Profession</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>Web Developer and Designer</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Experience</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>Expert</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Hourly Rate</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>10$/hr</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Total Projects</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>230</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>English Level</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>Expert</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Availability</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>6 months</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label>Your Bio</label><br />
-                                <p>Your detail description</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
+        <!-- resume -->
+    </div>
 </div>
