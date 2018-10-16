@@ -207,6 +207,10 @@
     <Compile Include="Migrations\201810160616509_UpdatedPersonClass.Designer.cs">
       <DependentUpon>201810160616509_UpdatedPersonClass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810160642319_FinishedPersonClassForProfilePage.cs" />
+    <Compile Include="Migrations\201810160642319_FinishedPersonClassForProfilePage.Designer.cs">
+      <DependentUpon>201810160642319_FinishedPersonClassForProfilePage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -359,6 +363,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810160616509_UpdatedPersonClass.resx">
       <DependentUpon>201810160616509_UpdatedPersonClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810160642319_FinishedPersonClassForProfilePage.resx">
+      <DependentUpon>201810160642319_FinishedPersonClassForProfilePage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

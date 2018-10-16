@@ -108,9 +108,21 @@
                             <div class="col-xs-12 col-sm-8">
                                 <ul class="list-group">
                                     <li class="list-group-item">@Model.UserName</li>
-                                    <li class="list-group-item">@Model.FavoriteGame</li>
-                                    <li class="list-group-item">@Model.NickName</li>
-                                    <li class="list-group-item"><i class="fa fa-phone"></i> @Model.PhoneNumber </li>
+                                    @if (Model.FavoriteGame != null)
+                                    {
+                                        <li class="list-group-item">@Model.FavoriteGame</li>
+
+                                    }
+                                    @if (Model.NickName != null)
+                                    {
+                                        <li class="list-group-item">@Model.NickName</li>
+
+                                    }
+                                    @if (Model.PhoneNumber != null)
+                                    {
+                                        <li class="list-group-item"><i class="fa fa-phone"></i> @Model.PhoneNumber </li>
+
+                                    }
                                     <li class="list-group-item"><i class="fa fa-envelope"></i> john@example.com</li>
                                 </ul>
                             </div>
@@ -156,7 +168,7 @@
                     }
                 </div>
                 <div class="bs-callout bs-callout-danger">
-                    @if (Model.Expertise.Count != 0)
+                    @if (Model.Expertise != null)
                     {
                         <h4>Key Expertise</h4>
                         <ul class="list-group">
