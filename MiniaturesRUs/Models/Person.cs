@@ -32,6 +32,7 @@ namespace MiniaturesRUs.Models
         /// UserName to be used for display and login purposes
         /// </summary>
         [Required]
+        [Index(IsUnique = true)]
         public string UserName { get; set; }
 
         /// <summary>
