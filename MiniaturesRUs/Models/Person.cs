@@ -31,15 +31,10 @@ namespace MiniaturesRUs.Models
         /// <summary>
         /// UserName to be used for display and login purposes
         /// </summary>
+        [ForeignKey("User")]
+        [Column(Order = 2)]
         [Required]
-        [Index(IsUnique = true)]
-        [StringLength(30, MinimumLength = 7)]
         public string UserName { get; set; }
-
-        /// <summary>
-        /// Foreign Key Linking Person to sensitive account details
-        /// </summary>
-        public int? AccountId { get; set; }
 
         /// <summary>
         /// Biography of the person
@@ -91,6 +86,8 @@ namespace MiniaturesRUs.Models
         /// </summary>
         public List<int> Owned { get; set; }
 
+        public ApplicationUser User { get; set; }
+
         /// <summary>
         /// No arg constructor
         /// </summary>
@@ -103,9 +100,8 @@ namespace MiniaturesRUs.Models
         /// </summary>
         /// <param name="name">Name of the person</param>
         /// <param name="userName">UserName of the person</param>
-        /// <param name="accountId">AccountID to be attached to the person</param>
-        public Person(string name, string userName, int accountId)
-            : this(name, "", userName,accountId)
+        public Person(string name, string userName)
+            : this(name, "", userName)
         {
         }
 
@@ -115,13 +111,11 @@ namespace MiniaturesRUs.Models
         /// <param name="name">Name of the person</param>
         /// <param name="address">Address of the person</param>
         /// <param name="userName">UserName of the person</param>
-        /// <param name="accountId">AccountID to be attached to the person</param>
-        public Person(string name, string address, string userName, int accountId)
+        public Person(string name, string address, string userName)
         {
             Name = name;
             Address = address;
             UserName = userName;
-            AccountId = accountId;
         }
     }
 }
