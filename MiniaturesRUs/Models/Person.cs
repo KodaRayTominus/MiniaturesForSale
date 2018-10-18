@@ -33,6 +33,7 @@ namespace MiniaturesRUs.Models
         /// </summary>
         [Required]
         [Index(IsUnique = true)]
+        [StringLength(30, MinimumLength = 7)]
         public string UserName { get; set; }
 
         /// <summary>
