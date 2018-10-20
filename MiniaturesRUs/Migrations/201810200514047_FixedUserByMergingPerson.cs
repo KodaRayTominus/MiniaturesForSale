@@ -3,7 +3,7 @@ namespace MiniaturesRUs.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initial : DbMigration
+    public partial class FixedUserByMergingPerson : DbMigration
     {
         public override void Up()
         {
@@ -31,68 +31,27 @@ namespace MiniaturesRUs.Migrations
                 c => new
                     {
                         OrderId = c.Int(nullable: false, identity: true),
-                        BuyerId = c.Int(),
-                        SellerId = c.Int(),
+                        BuyerId = c.String(maxLength: 128),
+                        SellerId = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.OrderId)
-                .ForeignKey("dbo.People", t => t.BuyerId)
-                .ForeignKey("dbo.People", t => t.SellerId)
+                .ForeignKey("dbo.AspNetUsers", t => t.BuyerId)
+                .ForeignKey("dbo.AspNetUsers", t => t.SellerId)
                 .Index(t => t.BuyerId)
                 .Index(t => t.SellerId);
-            
-            CreateTable(
-                "dbo.People",
-                c => new
-                    {
-                        PersonId = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        Address = c.String(),
-                        UserName = c.String(nullable: false),
-                        AccountId = c.Int(),
-                    })
-                .PrimaryKey(t => t.PersonId);
-            
-            CreateTable(
-                "dbo.ProductOrders",
-                c => new
-                    {
-                        OrderId = c.Int(nullable: false),
-                        ProductId = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => new { t.OrderId, t.ProductId })
-                .ForeignKey("dbo.Miniatures", t => t.ProductId, cascadeDelete: true)
-                .ForeignKey("dbo.Orders", t => t.OrderId, cascadeDelete: true)
-                .Index(t => t.OrderId)
-                .Index(t => t.ProductId);
-            
-            CreateTable(
-                "dbo.AspNetRoles",
-                c => new
-                    {
-                        Id = c.String(nullable: false, maxLength: 128),
-                        Name = c.String(nullable: false, maxLength: 256),
-                    })
-                .PrimaryKey(t => t.Id)
-                .Index(t => t.Name, unique: true, name: "RoleNameIndex");
-            
-            CreateTable(
-                "dbo.AspNetUserRoles",
-                c => new
-                    {
-                        UserId = c.String(nullable: false, maxLength: 128),
-                        RoleId = c.String(nullable: false, maxLength: 128),
-                    })
-                .PrimaryKey(t => new { t.UserId, t.RoleId })
-                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId)
-                .Index(t => t.RoleId);
             
             CreateTable(
                 "dbo.AspNetUsers",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        FullName = c.String(),
+                        Address = c.String(),
+                        Bio = c.String(),
+                        FavoriteGame = c.String(),
+                        NickName = c.String(),
+                        FactionFanFiction = c.String(),
+                        PastExperience = c.String(),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
@@ -133,35 +92,70 @@ namespace MiniaturesRUs.Migrations
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
+            CreateTable(
+                "dbo.AspNetUserRoles",
+                c => new
+                    {
+                        UserId = c.String(nullable: false, maxLength: 128),
+                        RoleId = c.String(nullable: false, maxLength: 128),
+                    })
+                .PrimaryKey(t => new { t.UserId, t.RoleId })
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
+                .Index(t => t.UserId)
+                .Index(t => t.RoleId);
+            
+            CreateTable(
+                "dbo.ProductOrders",
+                c => new
+                    {
+                        OrderId = c.Int(nullable: false),
+                        ProductId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.OrderId, t.ProductId })
+                .ForeignKey("dbo.Miniatures", t => t.ProductId, cascadeDelete: true)
+                .ForeignKey("dbo.Orders", t => t.OrderId, cascadeDelete: true)
+                .Index(t => t.OrderId)
+                .Index(t => t.ProductId);
+            
+            CreateTable(
+                "dbo.AspNetRoles",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        Name = c.String(nullable: false, maxLength: 256),
+                    })
+                .PrimaryKey(t => t.Id)
+                .Index(t => t.Name, unique: true, name: "RoleNameIndex");
+            
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.ProductOrders", "OrderId", "dbo.Orders");
             DropForeignKey("dbo.ProductOrders", "ProductId", "dbo.Miniatures");
-            DropForeignKey("dbo.Orders", "SellerId", "dbo.People");
-            DropForeignKey("dbo.Orders", "BuyerId", "dbo.People");
-            DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
-            DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
-            DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
-            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
+            DropForeignKey("dbo.Orders", "SellerId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Orders", "BuyerId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.ProductOrders", new[] { "ProductId" });
             DropIndex("dbo.ProductOrders", new[] { "OrderId" });
+            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
+            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
+            DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
+            DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
+            DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.Orders", new[] { "SellerId" });
             DropIndex("dbo.Orders", new[] { "BuyerId" });
+            DropTable("dbo.AspNetRoles");
+            DropTable("dbo.ProductOrders");
+            DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
-            DropTable("dbo.AspNetUserRoles");
-            DropTable("dbo.AspNetRoles");
-            DropTable("dbo.ProductOrders");
-            DropTable("dbo.People");
             DropTable("dbo.Orders");
             DropTable("dbo.Miniatures");
         }
