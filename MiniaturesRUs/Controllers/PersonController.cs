@@ -115,6 +115,11 @@ namespace MiniaturesRUs.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Messages()
+        {
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -35,6 +35,10 @@ namespace MiniaturesRUs.Models
         
         public ApplicationUser Recipient { get; set; }
 
+        public PersonalMessage()
+        {
+        }
+
         public PersonalMessage(string senderID, string recipientID, string message)
             :this(senderID, recipientID, "", message)
         {
