@@ -115,9 +115,19 @@ namespace MiniaturesRUs.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Messages()
+        //GET: Get inbox
+        public ActionResult Messages(string id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ApplicationUser applicationUser = db.Users.Find(id);
+            if (applicationUser == null)
+            {
+                return HttpNotFound();
+            }
+            return View(applicationUser);
         }
 
         protected override void Dispose(bool disposing)

@@ -96,7 +96,5 @@ namespace MiniaturesRUs.Models
         {
             return new ApplicationDbContext();
         }
-
-        public System.Data.Entity.DbSet<MiniaturesRUs.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }
