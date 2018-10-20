@@ -39,8 +39,8 @@ namespace MiniaturesRUs.Controllers
         // GET: Orders/Create
         public ActionResult Create()
         {
-            ViewBag.BuyerId = new SelectList(db.People, "PersonId", "Name");
-            ViewBag.SellerId = new SelectList(db.People, "PersonId", "Name");
+            ViewBag.BuyerId = new SelectList(db.Users, "PersonId", "Name");
+            ViewBag.SellerId = new SelectList(db.Users, "PersonId", "Name");
             return View();
         }
 
@@ -57,8 +57,8 @@ namespace MiniaturesRUs.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.BuyerId = new SelectList(db.People, "PersonId", "Name", order.BuyerId);
-            ViewBag.SellerId = new SelectList(db.People, "PersonId", "Name", order.SellerId);
+            ViewBag.BuyerId = new SelectList(db.Users, "PersonId", "Name", order.BuyerId);
+            ViewBag.SellerId = new SelectList(db.Users, "PersonId", "Name", order.SellerId);
             return View(order);
         }
 
@@ -74,8 +74,8 @@ namespace MiniaturesRUs.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.BuyerId = new SelectList(db.People, "PersonId", "Name", order.BuyerId);
-            ViewBag.SellerId = new SelectList(db.People, "PersonId", "Name", order.SellerId);
+            ViewBag.BuyerId = new SelectList(db.Users, "PersonId", "Name", order.BuyerId);
+            ViewBag.SellerId = new SelectList(db.Users, "PersonId", "Name", order.SellerId);
             return View(order);
         }
 
@@ -91,8 +91,8 @@ namespace MiniaturesRUs.Controllers
                 OrdersDB.UpdateOrder(order);
                 return RedirectToAction("Index");
             }
-            ViewBag.BuyerId = new SelectList(db.People, "PersonId", "Name", order.BuyerId);
-            ViewBag.SellerId = new SelectList(db.People, "PersonId", "Name", order.SellerId);
+            ViewBag.BuyerId = new SelectList(db.Users, "PersonId", "Name", order.BuyerId);
+            ViewBag.SellerId = new SelectList(db.Users, "PersonId", "Name", order.SellerId);
             return View(order);
         }
 
