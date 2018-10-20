@@ -10,108 +10,105 @@ using MiniaturesRUs.Models;
 
 namespace MiniaturesRUs.Controllers
 {
-    public class PersonController : Controller
+    public class PeopleController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Person
+        // GET: People
         public ActionResult Index()
         {
-            return View(db.Users.ToList());
+            return View(db.People.ToList());
         }
 
-        // GET: Person/Details/5
-        public ActionResult Details(string id)
+        // GET: People/Details/5
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicationUser applicationUser = db.Users.Find(id);
-            if (applicationUser == null)
+            Person person = PersonDB.GetPersonById(id);
+            if (person == null)
             {
                 return HttpNotFound();
             }
-            return View(applicationUser);
+            return View(person);
         }
 
-        // GET: Person/Create
+        // GET: People/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Person/Create
+        // POST: People/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
+        public ActionResult Create([Bind(Include = "Personid,Name,Address,UserName,AccountId")] Person person)
         {
             if (ModelState.IsValid)
             {
-                db.Users.Add(applicationUser);
-                db.SaveChanges();
+                PersonDB.AddPersonToDB(person);
                 return RedirectToAction("Index");
             }
 
-            return View(applicationUser);
+            return View(person);
         }
 
-        // GET: Person/Edit/5
-        public ActionResult Edit(string id)
+        // GET: People/Edit/5
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicationUser applicationUser = db.Users.Find(id);
-            if (applicationUser == null)
+            Person person = PersonDB.GetPersonById(id);
+            if (person == null)
             {
                 return HttpNotFound();
             }
-            return View(applicationUser);
+            return View(person);
         }
 
-        // POST: Person/Edit/5
+        // POST: People/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
+        public ActionResult Edit([Bind(Include = "Personid,Name,Address,UserName,AccountId")] Person person)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(applicationUser).State = EntityState.Modified;
-                db.SaveChanges();
+                PersonDB.UpdatePerson(person);
                 return RedirectToAction("Index");
             }
-            return View(applicationUser);
+            return View(person);
         }
 
-        // GET: Person/Delete/5
-        public ActionResult Delete(string id)
+        // GET: People/Delete/5
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicationUser applicationUser = db.Users.Find(id);
-            if (applicationUser == null)
+            Person person = PersonDB.GetPersonById(id);
+            if (person == null)
             {
                 return HttpNotFound();
             }
-            return View(applicationUser);
+            return View(person);
         }
 
-        // POST: Person/Delete/5
+        // POST: People/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            ApplicationUser applicationUser = db.Users.Find(id);
-            db.Users.Remove(applicationUser);
-            db.SaveChanges();
+            Person person = PersonDB.GetPersonById(id);
+            PersonDB.DeletePerson(person);
             return RedirectToAction("Index");
         }
 
