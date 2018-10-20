@@ -15,28 +15,32 @@ namespace MiniaturesRUs.Models
         [Required]
         [ForeignKey("Sender")]
         [Column(Order = 2)]
-        public int SenderID { get; set; }
+        [MaxLength(128)]
+        public string SenderID { get; set; }
 
         [ForeignKey("Recipient")]
         [Required]
         [Column(Order = 3)]
-        public int RecipientID { get; set; }
+        [MaxLength(128)]
+        public string RecipientID { get; set; }
 
+        [MaxLength(50)]
         public string Title { get; set; }
 
         [Required]
+        [MaxLength(500)]
         public string Message { get; set; }
 
         public ApplicationUser Sender { get; set; }
         
         public ApplicationUser Recipient { get; set; }
 
-        public PersonalMessage(int senderID, int recipientID, string message)
+        public PersonalMessage(string senderID, string recipientID, string message)
             :this(senderID, recipientID, "", message)
         {
         }
 
-        public PersonalMessage(int senderID, int recipientID, string title, string message)
+        public PersonalMessage(string senderID, string recipientID, string title, string message)
         {
             SenderID = senderID;
             RecipientID = recipientID;

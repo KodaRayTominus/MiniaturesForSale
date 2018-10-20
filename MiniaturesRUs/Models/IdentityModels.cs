@@ -88,11 +88,11 @@ namespace MiniaturesRUs.Models
 
         public virtual DbSet<ProductOrder> ProductOrders { get; set; }
 
+        public virtual DbSet<PersonalMessage> PersonalMessages { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
-
-        public System.Data.Entity.DbSet<MiniaturesRUs.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }
