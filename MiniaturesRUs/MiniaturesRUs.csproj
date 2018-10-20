@@ -194,22 +194,14 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
-    <Compile Include="Controllers\PeopleController.cs" />
+    <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\ProductOrdersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201810140352319_initial.cs" />
-    <Compile Include="Migrations\201810140352319_initial.Designer.cs">
-      <DependentUpon>201810140352319_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810160616509_UpdatedPersonClass.cs" />
-    <Compile Include="Migrations\201810160616509_UpdatedPersonClass.Designer.cs">
-      <DependentUpon>201810160616509_UpdatedPersonClass.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810160642319_FinishedPersonClassForProfilePage.cs" />
-    <Compile Include="Migrations\201810160642319_FinishedPersonClassForProfilePage.Designer.cs">
-      <DependentUpon>201810160642319_FinishedPersonClassForProfilePage.cs</DependentUpon>
+    <Compile Include="Migrations\201810200514047_FixedUserByMergingPerson.cs" />
+    <Compile Include="Migrations\201810200514047_FixedUserByMergingPerson.Designer.cs">
+      <DependentUpon>201810200514047_FixedUserByMergingPerson.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -219,8 +211,7 @@
     <Compile Include="Models\MiniatureDB.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrdersDB.cs" />
-    <Compile Include="Models\Person.cs" />
-    <Compile Include="Models\PersonDB.cs" />
+    <Compile Include="Models\PersonalMessage.cs" />
     <Compile Include="Models\ProductOrder.cs" />
     <Compile Include="Models\ProductOrderDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -316,11 +307,6 @@
     <Content Include="Views\Miniatures\Details.cshtml" />
     <Content Include="Views\Miniatures\Edit.cshtml" />
     <Content Include="Views\Miniatures\Index.cshtml" />
-    <Content Include="Views\People\Create.cshtml" />
-    <Content Include="Views\People\Delete.cshtml" />
-    <Content Include="Views\People\Details.cshtml" />
-    <Content Include="Views\People\Edit.cshtml" />
-    <Content Include="Views\People\Index.cshtml" />
     <Content Include="Views\Orders\Create.cshtml" />
     <Content Include="Views\Orders\Delete.cshtml" />
     <Content Include="Views\Orders\Details.cshtml" />
@@ -346,6 +332,11 @@
     <Content Include="Views\Test\Edit.cshtml" />
     <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Person\Create.cshtml" />
+    <Content Include="Views\Person\Delete.cshtml" />
+    <Content Include="Views\Person\Details.cshtml" />
+    <Content Include="Views\Person\Edit.cshtml" />
+    <Content Include="Views\Person\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -358,21 +349,15 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201810140352319_initial.resx">
-      <DependentUpon>201810140352319_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810160616509_UpdatedPersonClass.resx">
-      <DependentUpon>201810160616509_UpdatedPersonClass.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810160642319_FinishedPersonClassForProfilePage.resx">
-      <DependentUpon>201810160642319_FinishedPersonClassForProfilePage.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201810200514047_FixedUserByMergingPerson.resx">
+      <DependentUpon>201810200514047_FixedUserByMergingPerson.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
