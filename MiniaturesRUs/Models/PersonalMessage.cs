@@ -31,6 +31,8 @@ namespace MiniaturesRUs.Models
         [MaxLength(500)]
         public string Message { get; set; }
 
+        public bool Read { get; set; }
+
         public ApplicationUser Sender { get; set; }
         
         public ApplicationUser Recipient { get; set; }

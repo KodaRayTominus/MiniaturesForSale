@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Dynamic;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -127,7 +128,36 @@ namespace MiniaturesRUs.Controllers
             {
                 return HttpNotFound();
             }
-            return View(applicationUser);
+            InboxViewModel mymodel = new InboxViewModel();
+            mymodel.User = applicationUser;
+            mymodel.Messages = MessageDB.GetAllMessageForUserById(id);
+            return View(mymodel);
+        }
+
+        //POST:
+        [HttpPost]
+        public ActionResult Messages([Bind(Include = "Sender, Recipient, Title, Message")] PersonalMessage pm)
+        {
+            if (ModelState.IsValid)
+            {
+                db.PersonalMessages.Add(pm);
+                db.SaveChanges();
+                return RedirectToAction("Messages");
+            }
+
+            if (pm.SenderID == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ApplicationUser applicationUser = db.Users.Find(pm.SenderID);
+            if (applicationUser == null)
+            {
+                return HttpNotFound();
+            }
+            dynamic mymodel = new ExpandoObject();
+            mymodel.User = applicationUser;
+            mymodel.Messages = MessageDB.GetAllMessageForUserById(pm.SenderID);
+            return View(mymodel);
         }
 
         protected override void Dispose(bool disposing)
