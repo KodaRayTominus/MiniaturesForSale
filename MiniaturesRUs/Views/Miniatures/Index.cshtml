@@ -52,6 +52,27 @@
             @Html.ActionLink("Delete", "Delete", new { id=item.MiniId })
         </td>
     </tr>
+
 }
 
 </table>
+
+<ul class="pagination">
+
+    @for (int i = 1; i <= ViewBag.MaxPage; i++)
+    {
+        if (i == ViewBag.CurrentPage)
+        {
+            <li class="active">
+                @Html.ActionLink($"Page {i}", "Index", new { @id = i })
+            </li>
+        }
+        else
+        {
+            <li>
+                @Html.ActionLink($"Page {i}", "Index", new { @id = i })
+            </li>
+        }
+    }
+
+</ul>

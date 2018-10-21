@@ -15,9 +15,23 @@ namespace MiniaturesRUs.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Miniatures
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            return View(db.Minitures.ToList());
+            int page = id ?? 1;
+
+            const byte PageSize = 15;
+
+            ViewBag.CurrentPage = page;
+
+            List<Miniature> prods = MiniatureDB.GetProductsByPage(page, PageSize);
+
+            int numProducts = MiniatureDB.GetTotalProducts();
+
+            int maxPage = (int)Math.Ceiling(numProducts / (double)PageSize);
+
+            ViewBag.MaxPage = maxPage;
+
+            return View(prods);
         }
 
         // GET: Miniatures/Details/5
