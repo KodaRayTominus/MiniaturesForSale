@@ -136,7 +136,7 @@ namespace MiniaturesRUs.Controllers
 
         //POST:
         [HttpPost]
-        public ActionResult Messages([Bind(Include = "Sender, Recipient, Title, Message")] PersonalMessage pm)
+        public ActionResult Messages([Bind(Include = "SenderID, Recipient, Title, Message")] PersonalMessage pm)
         {
             if (ModelState.IsValid)
             {
