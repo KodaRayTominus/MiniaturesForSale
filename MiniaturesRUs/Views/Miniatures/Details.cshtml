@@ -3,104 +3,141 @@
 @{
     ViewBag.Title = "Details";
 }
+@section Styles {
+    <link href="@Url.Content("~/Content/user-profile-page.css")" rel="stylesheet" type="text/css" />
+}
 
-<h2>Details</h2>
+<h2>@Model.Name</h2>
 
 <div>
-    <h4>Miniature</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+    <div class="col-sm-9">
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+        <!-- resumt -->
+        <div class="panel panel-default">
+            <div class="panel-heading resume-heading">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="col-xs-12 col-sm-4">
+                            <figure>
+                                <img class="img-circle img-responsive" alt="" src="http://placehold.it/300x300">
+                            </figure>
+                        </div>
+                        <div class="col-xs-12 col-sm-8">
+                            <ul class="list-group">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Year)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Year)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GameName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GameName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Faction)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Faction)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Speed)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Speed)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Attack)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Attack)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Strength)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Strength)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HitPoints)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HitPoints)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Defense)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Defense)
-        </dd>
-
-    </dl>
+                                @Html.DisplayNameFor(model => model.Size)
+                                <li class="list-group-item">@Model.Size</li>
+                                @Html.DisplayNameFor(model => model.Speed)
+                                <li class="list-group-item">@Model.Speed</li>
+                                @Html.DisplayNameFor(model => model.Attack)
+                                <li class="list-group-item">@Model.Attack</li>
+                                @Html.DisplayNameFor(model => model.Strength)
+                                <li class="list-group-item">@Model.Strength</li>
+                                @Html.DisplayNameFor(model => model.HitPoints)
+                                <li class="list-group-item">@Model.HitPoints</li>
+                                @Html.DisplayNameFor(model => model.Defense)
+                                <li class="list-group-item">@Model.Defense</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bs-callout bs-callout-danger">
+                <h4>
+                    @Html.DisplayNameFor(model => model.Description)
+                </h4>
+                <p>
+                    @Model.Description
+                </p>
+            </div>
+            <div class="bs-callout bs-callout-danger">
+                <h4>
+                    @Html.DisplayNameFor(model => model.GameName)
+                </h4>
+                <p>
+                    @Model.GameName
+                </p>
+            </div>
+            <div class="bs-callout bs-callout-danger">
+                <h4>
+                    @Html.DisplayNameFor(model => model.Faction)
+                </h4>
+                <p>
+                    @Model.Faction
+                </p>
+            </div>
+            <div class="bs-callout bs-callout-danger">
+                <h4>
+                    @Html.DisplayNameFor(model => model.Year)
+                </h4>
+                <p>
+                    @Model.Year
+                </p>
+            </div>
+            @*<div class="bs-callout bs-callout-danger">
+                <h4>Language and Platform Skills</h4>
+                <ul class="list-group">
+                    <a class="list-group-item inactive-link" href="#">
+                        <div class="progress">
+                            <div data-placement="top" style="width: 80%;"
+                                 aria-valuemax="100" aria-valuemin="0" aria-valuenow="80" role="progressbar" class="progress-bar progress-bar-success">
+                                <span class="sr-only">80%</span>
+                                <span class="progress-type">Java/ JavaEE/ Spring Framework </span>
+                            </div>
+                        </div>
+                        <div class="progress">
+                            <div data-placement="top" style="width: 70%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="1" role="progressbar" class="progress-bar progress-bar-success">
+                                <span class="sr-only">70%</span>
+                                <span class="progress-type">PHP/ Lamp Stack</span>
+                            </div>
+                        </div>
+                        <div class="progress">
+                            <div data-placement="top" style="width: 70%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="1" role="progressbar" class="progress-bar progress-bar-success">
+                                <span class="sr-only">70%</span>
+                                <span class="progress-type">JavaScript/ NodeJS/ MEAN stack </span>
+                            </div>
+                        </div>
+                        <div class="progress">
+                            <div data-placement="top" style="width: 65%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="1" role="progressbar" class="progress-bar progress-bar-warning">
+                                <span class="sr-only">65%</span>
+                                <span class="progress-type">Python/ Numpy/ Scipy</span>
+                            </div>
+                        </div>
+                        <div class="progress">
+                            <div data-placement="top" style="width: 60%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class="progress-bar progress-bar-warning">
+                                <span class="sr-only">60%</span>
+                                <span class="progress-type">C</span>
+                            </div>
+                        </div>
+                        <div class="progress">
+                            <div data-placement="top" style="width: 50%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" role="progressbar" class="progress-bar progress-bar-warning">
+                                <span class="sr-only">50%</span>
+                                <span class="progress-type">C++</span>
+                            </div>
+                        </div>
+                        <div class="progress">
+                            <div data-placement="top" style="width: 10%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" role="progressbar" class="progress-bar progress-bar-danger">
+                                <span class="sr-only">10%</span>
+                                <span class="progress-type">Go</span>
+                            </div>
+                        </div>
+                        <div class="progress-meter">
+                            <div style="width: 25%;" class="meter meter-left"><span class="meter-text">I suck</span></div>
+                            <div style="width: 25%;" class="meter meter-left"><span class="meter-text">I know little</span></div>
+                            <div style="width: 30%;" class="meter meter-right"><span class="meter-text">I'm a guru</span></div>
+                            <div style="width: 20%;" class="meter meter-right"><span class="meter-text">I''m good</span></div>
+                        </div>
+                    </a>
+                </ul>
+                </div>*@
+        </div>
+        <div>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.MiniId }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Miniid }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+    <!-- resume -->
+
