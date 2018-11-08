@@ -9,6 +9,8 @@ namespace MiniaturesRUs.Models
     {
         public ApplicationUser User { get; set; }
 
+        public string RecipientName { get; set; }
+
         public PersonalMessage NewMessage { get; set; }
 
         public List<PersonalMessage> Messages { get; set; }
