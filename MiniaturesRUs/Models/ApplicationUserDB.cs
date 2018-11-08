@@ -5,7 +5,7 @@ using System.Web;
 
 namespace MiniaturesRUs.Models
 {
-    public class PersonDB
+    public class ApplicationUserDB
     {
     }
 }
