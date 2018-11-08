@@ -42,23 +42,6 @@ namespace MiniaturesRUs.Controllers
             return View();
         }
 
-        // POST: Person/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Users.Add(applicationUser);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(applicationUser);
-        }
-
         // GET: Person/Edit/5
         public ActionResult Edit(string id)
         {
@@ -88,32 +71,6 @@ namespace MiniaturesRUs.Controllers
                 return RedirectToAction("Index");
             }
             return View(applicationUser);
-        }
-
-        // GET: Person/Delete/5
-        public ActionResult Delete(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ApplicationUser applicationUser = db.Users.Find(id);
-            if (applicationUser == null)
-            {
-                return HttpNotFound();
-            }
-            return View(applicationUser);
-        }
-
-        // POST: Person/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
-        {
-            ApplicationUser applicationUser = db.Users.Find(id);
-            db.Users.Remove(applicationUser);
-            db.SaveChanges();
-            return RedirectToAction("Index");
         }
 
         //GET: Get inbox
