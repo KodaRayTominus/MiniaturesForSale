@@ -128,18 +128,21 @@ namespace MiniaturesRUs.Controllers
             {
                 return HttpNotFound();
             }
-            InboxViewModel mymodel = new InboxViewModel();
-            mymodel.User = applicationUser;
-            mymodel.Messages = MessageDB.GetAllMessageForUserById(id);
-            return View(mymodel);
+            InboxViewModel myModel = new InboxViewModel();
+            myModel.User = applicationUser;
+            myModel.Messages = MessageDB.GetAllMessageForUserById(id);
+            return View(myModel);
         }
 
         //POST:
         [HttpPost]
-        public ActionResult Messages([Bind(Include = "SenderID, Recipient, Title, Message")] PersonalMessage pm)
+        public ActionResult Messages(InboxViewModel myModel)
         {
             if (ModelState.IsValid)
             {
+                PersonalMessage messageToSend = new PersonalMessage();
+
+                ApplicationUser Recipient =  
                 db.PersonalMessages.Add(pm);
                 db.SaveChanges();
                 return RedirectToAction("Messages");
