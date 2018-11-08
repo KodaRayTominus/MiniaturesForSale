@@ -99,25 +99,29 @@ namespace MiniaturesRUs.Controllers
             {
                 PersonalMessage messageToSend = new PersonalMessage();
 
-                ApplicationUser Recipient =  
-                db.PersonalMessages.Add(pm);
+                ApplicationUser Recipient = ApplicationUserDB.GetApplicationUserByUserName(myModel.RecipientName);
+
+                messageToSend.RecipientID = Recipient.Id;
+                messageToSend.Message = myModel.NewMessage.Message;
+                messageToSend.SenderID = myModel.User.Id;
+                messageToSend.Title = myModel.NewMessage.Title;
+                messageToSend.Read = false;
+                db.PersonalMessages.Add(messageToSend);
                 db.SaveChanges();
                 return RedirectToAction("Messages");
             }
 
-            if (pm.SenderID == null)
+            if (myModel.User == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicationUser applicationUser = db.Users.Find(pm.SenderID);
+            ApplicationUser applicationUser = db.Users.Find(myModel.User.Id);
             if (applicationUser == null)
             {
                 return HttpNotFound();
             }
-            dynamic mymodel = new ExpandoObject();
-            mymodel.User = applicationUser;
-            mymodel.Messages = MessageDB.GetAllMessageForUserById(pm.SenderID);
-            return View(mymodel);
+            myModel.Messages = MessageDB.GetAllMessageForUserById(myModel.User.Id);
+            return View(myModel);
         }
 
         protected override void Dispose(bool disposing)
