@@ -13,7 +13,7 @@ namespace MiniaturesRUs.Models
         static ApplicationDbContext db = new ApplicationDbContext();
 
 
-        public static ApplicationUser GetApplicationUserById(int? id)
+        public static ApplicationUser GetApplicationUserById(string id)
         {
             return db.Users.Find(id);
         }

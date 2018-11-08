@@ -43,9 +43,10 @@
                                 <h4 class="modal-title">Compose</h4>
                             </div>
                             <div class="modal-body">
-                                <form role="form" class="form-horizontal" action="~/Views/Person/Messages.cshtml" method="post">
+                                <form role="form" class="form-horizontal" action="~/Person/Messages" method="post">
                                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                    @Html.HiddenFor(model => model.NewMessage.SenderID)
+                                    @Html.HiddenFor(model => model.NewMessage.SenderID, Model.User.Id)
+                                    @Html.HiddenFor(model => model.Messages)
 
                                     <div class="form-group">
                                         @Html.LabelFor(model => model.RecipientName, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -185,16 +186,16 @@
                         {
                             if (message.Read)
                             {
-                                <tr class="">
-                                    <td class="inbox-small-cells">
-                                        <input type="checkbox" class="mail-checkbox">
-                                    </td>
-                                    <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
-                                    <td class="view-message dont-show">@message.Sender.UserName</td>
-                                    <td class="view-message">@message.Title </td>
-                                    <td class="view-message inbox-small-cells"></td>
-                                    <td class="view-message text-right">DATE</td>
-                                </tr>
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
+                            <td class="view-message  dont-show">@ApplicationUserDB.GetApplicationUserById(message.SenderID).UserName</td>
+                            <td class="view-message">@message.Title </td>
+                            <td class="view-message inbox-small-cells"></td>
+                            <td class="view-message text-right">DATE</td>
+                        </tr>
                             }
                             else
                             {
@@ -203,7 +204,7 @@
                                         <input type="checkbox" class="mail-checkbox">
                                     </td>
                                     <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
-                                    <td class="view-message  dont-show">@message.Sender.UserName</td>
+                                    <td class="view-message  dont-show">@ApplicationUserDB.GetApplicationUserById(message.SenderID).UserName</td>
                                     <td class="view-message ">@message.Title</td>
                                     <td class="view-message  inbox-small-cells"><i class="fa fa-paperclip"></i></td>
                                     <td class="view-message  text-right">DATE</td>

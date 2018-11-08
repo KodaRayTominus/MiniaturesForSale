@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using MiniaturesRUs.Models;
 
 namespace MiniaturesRUs.Controllers
@@ -95,20 +96,37 @@ namespace MiniaturesRUs.Controllers
         [HttpPost]
         public ActionResult Messages(InboxViewModel myModel)
         {
-            if (ModelState.IsValid)
+            PersonalMessage messageToSend = new PersonalMessage();
+
+            if(User.Identity.GetUserId() != null)
             {
-                PersonalMessage messageToSend = new PersonalMessage();
+                myModel.User = ApplicationUserDB.GetApplicationUserById(User.Identity.GetUserId());
+                myModel.NewMessage.SenderID = myModel.User.Id;
+                myModel.NewMessage.Sender = myModel.User;
+                messageToSend.SenderID = myModel.User.Id;
+
+            }
+
+            if(myModel.RecipientName != null)
+            {
 
                 ApplicationUser Recipient = ApplicationUserDB.GetApplicationUserByUserName(myModel.RecipientName);
-
+                myModel.NewMessage.RecipientID = Recipient.Id;
+                myModel.NewMessage.Recipient = Recipient;
                 messageToSend.RecipientID = Recipient.Id;
+
+            }
+            ModelState.Clear();
+            TryValidateModel(myModel);
+            if (ModelState.IsValid)
+            {
                 messageToSend.Message = myModel.NewMessage.Message;
-                messageToSend.SenderID = myModel.User.Id;
                 messageToSend.Title = myModel.NewMessage.Title;
                 messageToSend.Read = false;
                 db.PersonalMessages.Add(messageToSend);
                 db.SaveChanges();
-                return RedirectToAction("Messages");
+                myModel.Messages = MessageDB.GetAllMessageForUserById(myModel.User.Id);
+                return RedirectToAction("Messages", "Person", new { id = myModel.User.Id });
             }
 
             if (myModel.User == null)
@@ -120,7 +138,6 @@ namespace MiniaturesRUs.Controllers
             {
                 return HttpNotFound();
             }
-            myModel.Messages = MessageDB.GetAllMessageForUserById(myModel.User.Id);
             return View(myModel);
         }
 
