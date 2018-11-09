@@ -41,11 +41,6 @@ namespace MiniaturesRUs.Models
         public string NickName { get; set; }
 
         /// <summary>
-        /// Persons contact phone number
-        /// </summary>
-        public string PhoneNumber { get; set; }
-
-        /// <summary>
         /// A persons personal fan fiction for their fan faction
         /// </summary>
         public string FactionFanFiction { get; set; }
