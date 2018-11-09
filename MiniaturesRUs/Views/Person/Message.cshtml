@@ -1,0 +1,50 @@
+﻿@using Microsoft.AspNet.Identity
+@model MiniaturesRUs.Models.PersonalMessage
+
+@{
+    ViewBag.Title = "Message";
+}
+
+<h2>Message</h2>
+
+<div>
+    <h4>PersonalMessage</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SenderID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SenderID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RecipientID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecipientID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Message)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Message)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Messages", "Messages", new { id = User.Identity.GetUserId() })
+</p>
