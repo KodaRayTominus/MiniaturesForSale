@@ -118,8 +118,7 @@ namespace MiniaturesRUs.Controllers
             if (ModelState.IsValid)
             {
                 PersonalMessageHelper.ProcessBody(myModel, messageToSend);
-                db.PersonalMessages.Add(messageToSend);
-                db.SaveChanges();
+                MessageDB.AddMessage(messageToSend);
                 myModel.Messages = MessageDB.GetAllMessageForUserById(myModel.User.Id);
                 return RedirectToAction("Messages", "Person", new { id = myModel.User.Id });
             }
@@ -131,6 +130,20 @@ namespace MiniaturesRUs.Controllers
             }
             //reloads the page
             return View(myModel);
+        }
+
+        public ActionResult Message(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PersonalMessage messageToView = MessageDB.GetMessageById(id);
+            if(messageToView == null)
+            {
+                return HttpNotFound();
+            }
+            return View(messageToView);
         }
 
         protected override void Dispose(bool disposing)
