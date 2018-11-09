@@ -227,6 +227,7 @@
     <Compile Include="Models\OrdersDB.cs" />
     <Compile Include="Models\PersonalMessage.cs" />
     <Compile Include="Models\ApplicationUserDB.cs" />
+    <Compile Include="Models\PersonalMessageHelper.cs" />
     <Compile Include="Models\ProductOrder.cs" />
     <Compile Include="Models\ProductOrderDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

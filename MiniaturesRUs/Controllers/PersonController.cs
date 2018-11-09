@@ -98,46 +98,38 @@ namespace MiniaturesRUs.Controllers
         {
             PersonalMessage messageToSend = new PersonalMessage();
 
+            //checks sender info and adds it too the message
             if(User.Identity.GetUserId() != null)
             {
-                myModel.User = ApplicationUserDB.GetApplicationUserById(User.Identity.GetUserId());
-                myModel.NewMessage.SenderID = myModel.User.Id;
-                myModel.NewMessage.Sender = myModel.User;
-                messageToSend.SenderID = myModel.User.Id;
-
+                PersonalMessageHelper.ProcessSender(myModel, messageToSend, User.Identity.GetUserId());
             }
 
-            if(myModel.RecipientName != null)
+            //checks recipient info and adds it too the message
+            if (myModel.RecipientName != null)
             {
-
-                ApplicationUser Recipient = ApplicationUserDB.GetApplicationUserByUserName(myModel.RecipientName);
-                myModel.NewMessage.RecipientID = Recipient.Id;
-                myModel.NewMessage.Recipient = Recipient;
-                messageToSend.RecipientID = Recipient.Id;
-
+                PersonalMessageHelper.ProcessRecipient(myModel, messageToSend);
             }
             ModelState.Clear();
             TryValidateModel(myModel);
+
+            //checks if the model is valid, and finishes building the message
+            //stores it in the DB to be grabbed
+            //reloads the inbox
             if (ModelState.IsValid)
             {
-                messageToSend.Message = myModel.NewMessage.Message;
-                messageToSend.Title = myModel.NewMessage.Title;
-                messageToSend.Read = false;
+                PersonalMessageHelper.ProcessBody(myModel, messageToSend);
                 db.PersonalMessages.Add(messageToSend);
                 db.SaveChanges();
                 myModel.Messages = MessageDB.GetAllMessageForUserById(myModel.User.Id);
                 return RedirectToAction("Messages", "Person", new { id = myModel.User.Id });
             }
 
+            //checks if user is null and displays a error page
             if (myModel.User == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicationUser applicationUser = db.Users.Find(myModel.User.Id);
-            if (applicationUser == null)
-            {
-                return HttpNotFound();
-            }
+            //reloads the page
             return View(myModel);
         }
 
