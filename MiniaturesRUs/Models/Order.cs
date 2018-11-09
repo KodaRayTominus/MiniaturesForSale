@@ -15,11 +15,11 @@ namespace MiniaturesRUs.Models
 
         [ForeignKey("Person")]
         [Column(Order = 2)]
-        public int? BuyerId { get; set; }
+        public string BuyerId { get; set; }
 
         [ForeignKey("Person2")]
         [Column(Order = 3)]
-        public int? SellerId { get; set; }
+        public string SellerId { get; set; }
 
         public ApplicationUser Person { get; set; }
 
@@ -29,7 +29,7 @@ namespace MiniaturesRUs.Models
         {
         }
 
-        public Order(int buyerId, int sellerId)
+        public Order(string buyerId, string sellerId)
         {
             BuyerId = buyerId;
             SellerId = sellerId;

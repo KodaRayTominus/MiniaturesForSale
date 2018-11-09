@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniaturesRUs", "MiniaturesRUs\MiniaturesRUs.csproj", "{1B0B000D-AE9F-4AEE-8936-7EDCC6820C09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniaturesRUs.Tests", "MiniaturesRUs.Tests\MiniaturesRUs.Tests.csproj", "{9CA04EF1-3ACE-4560-856D-3BC03B893105}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{1B0B000D-AE9F-4AEE-8936-7EDCC6820C09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B0B000D-AE9F-4AEE-8936-7EDCC6820C09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B0B000D-AE9F-4AEE-8936-7EDCC6820C09}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9CA04EF1-3ACE-4560-856D-3BC03B893105}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9CA04EF1-3ACE-4560-856D-3BC03B893105}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9CA04EF1-3ACE-4560-856D-3BC03B893105}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9CA04EF1-3ACE-4560-856D-3BC03B893105}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
