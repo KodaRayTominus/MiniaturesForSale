@@ -82,7 +82,7 @@
             </div>
             <ul class="inbox-nav inbox-divider">
                 <li class="active">
-                    <a href="#"><i class="fa fa-inbox"></i> Inbox <span class="label label-danger pull-right">2</span></a>
+                    <a href="#"><i class="fa fa-inbox"></i> Inbox <span class="label label-danger pull-right">@Model.Messages.Count</span></a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-envelope-o"></i> Sent Mail</a>
@@ -180,7 +180,7 @@
                         </li>
                     </ul>
                 </div>
-                <table class="table table-inbox table-hover">
+                <table class="table table-inbox">
                     <tbody>
                         @foreach (PersonalMessage message in Model.Messages)
                         {
@@ -217,10 +217,11 @@
         </aside>
     </div>
 </div>
-<script>jQuery(document).ready(function ($) {
-            $(".clickable-row").click(function () {
-                window.location = $(this).data("href");
-            });
+<script>
+    jQuery(document).ready(function ($) {
+        $(".clickable-row").click(function () {
+            window.location = $(this).data("href");
         });
+    });
 </script>
 
