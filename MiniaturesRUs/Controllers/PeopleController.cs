@@ -2,114 +2,148 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Dynamic;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using MiniaturesRUs.Models;
 
 namespace MiniaturesRUs.Controllers
 {
-    public class PeopleController : Controller
+    public class PersonController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: People
+        // GET: Person
         public ActionResult Index()
         {
-            return View(db.People.ToList());
+            return View(db.Users.ToList());
         }
 
-        // GET: People/Details/5
-        public ActionResult Details(int? id)
+        // GET: Person/Details/5
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Person person = PersonDB.GetPersonById(id);
-            if (person == null)
+            ApplicationUser applicationUser = db.Users.Find(id);
+            if (applicationUser == null)
             {
                 return HttpNotFound();
             }
-            return View(person);
+            return View(applicationUser);
         }
 
-        // GET: People/Create
+        // GET: Person/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: People/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Personid,Name,Address,UserName,AccountId")] Person person)
-        {
-            if (ModelState.IsValid)
-            {
-                PersonDB.AddPersonToDB(person);
-                return RedirectToAction("Index");
-            }
-
-            return View(person);
-        }
-
-        // GET: People/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: Person/Edit/5
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Person person = PersonDB.GetPersonById(id);
-            if (person == null)
+            ApplicationUser applicationUser = db.Users.Find(id);
+            if (applicationUser == null)
             {
                 return HttpNotFound();
             }
-            return View(person);
+            return View(applicationUser);
         }
 
-        // POST: People/Edit/5
+        // POST: Person/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Personid,Name,Address,UserName,AccountId")] Person person)
+        public ActionResult Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
         {
             if (ModelState.IsValid)
             {
-                PersonDB.UpdatePerson(person);
+                db.Entry(applicationUser).State = EntityState.Modified;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(person);
+            return View(applicationUser);
         }
 
-        // GET: People/Delete/5
-        public ActionResult Delete(int? id)
+        //GET: Get inbox
+        public ActionResult Messages(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Person person = PersonDB.GetPersonById(id);
-            if (person == null)
+            ApplicationUser applicationUser = db.Users.Find(id);
+            if (applicationUser == null)
             {
                 return HttpNotFound();
             }
-            return View(person);
+            InboxViewModel myModel = new InboxViewModel();
+            myModel.User = applicationUser;
+            myModel.Messages = MessageDB.GetAllMessageForUserById(id);
+            return View(myModel);
         }
 
-        // POST: People/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        //POST:
+        [HttpPost]
+        public ActionResult Messages(InboxViewModel myModel)
         {
-            Person person = PersonDB.GetPersonById(id);
-            PersonDB.DeletePerson(person);
-            return RedirectToAction("Index");
+            PersonalMessage messageToSend = new PersonalMessage();
+
+            //checks sender info and adds it too the message
+            if(User.Identity.GetUserId() != null)
+            {
+                PersonalMessageHelper.ProcessSender(myModel, messageToSend, User.Identity.GetUserId());
+            }
+
+            //checks recipient info and adds it too the message
+            if (myModel.RecipientName != null)
+            {
+                PersonalMessageHelper.ProcessRecipient(myModel, messageToSend);
+            }
+            ModelState.Clear();
+            TryValidateModel(myModel);
+
+            //checks if the model is valid, and finishes building the message
+            //stores it in the DB to be grabbed
+            //reloads the inbox
+            if (ModelState.IsValid)
+            {
+                PersonalMessageHelper.ProcessBody(myModel, messageToSend);
+                MessageDB.AddMessage(messageToSend);
+                myModel.Messages = MessageDB.GetAllMessageForUserById(myModel.User.Id);
+                return RedirectToAction("Messages", "Person", new { id = myModel.User.Id });
+            }
+
+            //checks if user is null and displays a error page
+            if (myModel.User == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            //reloads the page
+            return View(myModel);
+        }
+
+        public ActionResult Message(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PersonalMessage messageToView = MessageDB.GetMessageById(id);
+            if(messageToView == null)
+            {
+                return HttpNotFound();
+            }
+            return View(messageToView);
         }
 
         protected override void Dispose(bool disposing)
