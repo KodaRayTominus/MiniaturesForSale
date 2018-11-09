@@ -8,15 +8,6 @@ using System.Security.Principal;
 using System.Data;
 using System.Dynamic;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using MiniaturesRUs.Models;
-using System.IO;
-using System.Text;
-using System.Web.Mvc.Async;
-using System.Web.Mvc.Filters;
-using System.Web.Profile;
-using System.Web.Routing;
-using System.Runtime.CompilerServices;
 
 namespace MiniaturesRUs.Models
 {
@@ -40,11 +31,6 @@ namespace MiniaturesRUs.Models
             List<ApplicationUser> temp = db.Users.Where(u => u.UserName == recipientName).ToList();
 
             return temp[0];
-        }
-
-        public static string GetLoggedInUserId()
-        {
-            return System.Web.Mvc.User
         }
     }
 }

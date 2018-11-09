@@ -1,4 +1,4 @@
-﻿@using MiniaturesRUs.Models
+﻿@using Microsoft.AspNet.Identity
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +29,7 @@
                     <li>@Html.ActionLink("Miniatures", "Index", "Miniatures")</li>
                     @if (User != null)
                     {
-                        <li>@Html.ActionLink("Profile", "Index", "Miniatures", new {id = ApplicationUserDB.GetLoggedInUserId() }, new { })</li>
+                        <li>@Html.ActionLink("Profile", "details", "Person", new { id = User.Identity.GetUserId() }, new { })</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")
