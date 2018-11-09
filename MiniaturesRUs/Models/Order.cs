@@ -21,9 +21,9 @@ namespace MiniaturesRUs.Models
         [Column(Order = 3)]
         public int? SellerId { get; set; }
 
-        public Person Person { get; set; }
+        public ApplicationUser Person { get; set; }
 
-        public Person Person2 { get; set; }
+        public ApplicationUser Person2 { get; set; }
 
         public Order()
         {

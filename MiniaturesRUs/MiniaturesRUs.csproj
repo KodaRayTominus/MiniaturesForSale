@@ -194,28 +194,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
-    <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Controllers\ProductOrdersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201810200514047_FixedUserByMergingPerson.cs" />
-    <Compile Include="Migrations\201810200514047_FixedUserByMergingPerson.Designer.cs">
-      <DependentUpon>201810200514047_FixedUserByMergingPerson.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810200757467_AddedPersonalMessagesToDatabase.cs" />
-    <Compile Include="Migrations\201810200757467_AddedPersonalMessagesToDatabase.Designer.cs">
-      <DependentUpon>201810200757467_AddedPersonalMessagesToDatabase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810200759275_UpdatedDataTypeSize.cs" />
-    <Compile Include="Migrations\201810200759275_UpdatedDataTypeSize.Designer.cs">
-      <DependentUpon>201810200759275_UpdatedDataTypeSize.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810210008228_AddedReadPropertyToPersonalMessage.cs" />
-    <Compile Include="Migrations\201810210008228_AddedReadPropertyToPersonalMessage.Designer.cs">
-      <DependentUpon>201810210008228_AddedReadPropertyToPersonalMessage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\InboxViewModel.cs" />
@@ -373,20 +356,6 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201810200514047_FixedUserByMergingPerson.resx">
-      <DependentUpon>201810200514047_FixedUserByMergingPerson.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810200757467_AddedPersonalMessagesToDatabase.resx">
-      <DependentUpon>201810200757467_AddedPersonalMessagesToDatabase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810200759275_UpdatedDataTypeSize.resx">
-      <DependentUpon>201810200759275_UpdatedDataTypeSize.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810210008228_AddedReadPropertyToPersonalMessage.resx">
-      <DependentUpon>201810210008228_AddedReadPropertyToPersonalMessage.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
