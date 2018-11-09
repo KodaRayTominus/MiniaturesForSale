@@ -15,23 +15,21 @@ namespace MiniaturesRUs.Models
 
         [ForeignKey("Person")]
         [Column(Order = 2)]
-        [MaxLength(128)]
-        public string BuyerId { get; set; }
+        public int? BuyerId { get; set; }
 
         [ForeignKey("Person2")]
         [Column(Order = 3)]
-        [MaxLength(128)]
-        public string SellerId { get; set; }
+        public int? SellerId { get; set; }
 
-        public ApplicationUser Person { get; set; }
+        public Person Person { get; set; }
 
-        public ApplicationUser Person2 { get; set; }
+        public Person Person2 { get; set; }
 
         public Order()
         {
         }
 
-        public Order(string buyerId, string sellerId)
+        public Order(int buyerId, int sellerId)
         {
             BuyerId = buyerId;
             SellerId = sellerId;

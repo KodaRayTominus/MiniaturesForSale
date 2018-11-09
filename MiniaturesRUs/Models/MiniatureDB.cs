@@ -31,6 +31,28 @@ namespace MiniaturesRUs.Models
             db.SaveChanges();
         }
 
+        internal static int GetTotalProducts()
+        {
+
+            ApplicationDbContext context = new ApplicationDbContext();
+
+            return context.Minitures.Count();
+        }
+
+        internal static List<Miniature> GetProductsByPage(int page, byte pageSize)
+        {
+            ApplicationDbContext context = new ApplicationDbContext();
+
+            List<Miniature> prodList = context
+                                        .Minitures
+                                        .Take(pageSize) //grabs one page worth of products, equivilent to sql offset or fetch
+                                        .OrderBy(p => p.Name)
+                                        .Skip((page - 1) * pageSize)
+                                        .ToList();
+
+            return prodList;
+        }
+
         public static void DeleteMiniature(Miniature miniature)
         {
             ApplicationDbContext db = new ApplicationDbContext();

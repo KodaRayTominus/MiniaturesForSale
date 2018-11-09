@@ -8,66 +8,66 @@ using System.Threading.Tasks;
 
 namespace MiniaturesRUs.Models.Tests
 {
-    //[TestClass()]
-    //public class PersonTests
-    //{
-    //    [TestMethod()]
-    //    public void Person_CreatePerson_CreatePersonWithDefaultValues()
-    //    {
-    //        //arrange
-    //        string name = "test";
+    [TestClass()]
+    public class PersonTests
+    {
+        [TestMethod()]
+        public void Person_CreatePerson_CreatePersonWithDefaultValues()
+        {
+            //arrange
+            string name = "test";
 
-    //        string userName = "TestName";
+            string userName = "TestName";
             
-    //        string defaultAddress = "";
+            string defaultAddress = "";
 
-    //        int mockAccountId = 9999;
-
-
-    //        //act
-    //        ApplicationUser personToTest = new ApplicationUser(name, userName, mockAccountId);
+            int mockAccountId = 9999;
 
 
-    //        //assert
-    //        Assert.AreEqual(defaultAddress, personToTest.Address);
-    //    }
+            //act
+            Person personToTest = new Person(name, userName, mockAccountId);
 
-    //    [TestMethod()]
-    //    public void Person_CreatePerson_CreateEmptyPerson()
-    //    {
-    //        //act
-    //        ApplicationUser nullPerson = new ApplicationUser();
 
-    //        //assert
-    //        Assert.AreEqual(null, nullPerson.Name);
-    //        Assert.AreEqual(null, nullPerson.Address);
-    //        Assert.AreEqual(null, nullPerson.UserName);
-    //        Assert.AreEqual(null, nullPerson.AccountId);
-    //    }
+            //assert
+            Assert.AreEqual(defaultAddress, personToTest.Address);
+        }
 
-    //    [TestMethod()]
-    //    public void Person_CreatePerson_CreatePersonWithAllParameters()
-    //    {
-    //        //arrange
-    //        string name = "tester";
-    //        string nameToTest = "tester";
+        [TestMethod()]
+        public void Person_CreatePerson_CreateEmptyPerson()
+        {
+            //act
+            Person nullPerson = new Person();
 
-    //        string userName = "TestersName";
-    //        string userNametoTest = "TestersName";
+            //assert
+            Assert.AreEqual(null, nullPerson.Name);
+            Assert.AreEqual(null, nullPerson.Address);
+            Assert.AreEqual(null, nullPerson.UserName);
+            Assert.AreEqual(null, nullPerson.AccountId);
+        }
 
-    //        string address = "100 Addy ln";
-    //        string addressToTest = "100 Addy ln";
+        [TestMethod()]
+        public void Person_CreatePerson_CreatePersonWithAllParameters()
+        {
+            //arrange
+            string name = "tester";
+            string nameToTest = "tester";
 
-    //        int mockAccountId = 9999;
-    //        int accountIdToTest = 9999;
-    //        //act
-    //        ApplicationUser PersonToTest = new ApplicationUser(name, address, userName, mockAccountId);
+            string userName = "TestersName";
+            string userNametoTest = "TestersName";
 
-    //        //assert
-    //        Assert.AreEqual(nameToTest, PersonToTest.Name);
-    //        Assert.AreEqual(userNametoTest, PersonToTest.UserName);
-    //        Assert.AreEqual(addressToTest, PersonToTest.Address);
-    ////        Assert.AreEqual(accountIdToTest, PersonToTest.AccountId);
-    //    }
-    //}
+            string address = "100 Addy ln";
+            string addressToTest = "100 Addy ln";
+
+            int mockAccountId = 9999;
+            int accountIdToTest = 9999;
+            //act
+            Person PersonToTest = new Person(name, address, userName, mockAccountId);
+
+            //assert
+            Assert.AreEqual(nameToTest, PersonToTest.Name);
+            Assert.AreEqual(userNametoTest, PersonToTest.UserName);
+            Assert.AreEqual(addressToTest, PersonToTest.Address);
+            Assert.AreEqual(accountIdToTest, PersonToTest.AccountId);
+        }
+    }
 }

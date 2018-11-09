@@ -15,11 +15,11 @@ namespace MiniaturesRUs.Models.Tests
         public void Order_CreateOrder_CreatesOrderWithAllParameters()
         {
             //arrange
-            string salesPersonId = "1";
-            string salesPersonIdToTest = "1";
+            int salesPersonId = 1;
+            int salesPersonIdToTest = 1;
 
-            string buyerPersonId = "15";
-            string buyerPersonIdToTest = "15";
+            int buyerPersonId = 15;
+            int buyerPersonIdToTest = 15;
 
             //act
             Order testOrder = new Order(buyerPersonId, salesPersonId);
