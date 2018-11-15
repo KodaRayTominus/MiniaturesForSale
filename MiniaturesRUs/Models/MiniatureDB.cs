@@ -12,14 +12,14 @@ namespace MiniaturesRUs.Models
         {
             ApplicationDbContext db = new ApplicationDbContext();
 
-            return db.Minitures.Find(id);
+            return db.Miniatures.Find(id);
         }
 
         public static void AddMiniatureToDB(Miniature mini)
         {
             ApplicationDbContext db = new ApplicationDbContext();
 
-            db.Minitures.Add(mini);
+            db.Miniatures.Add(mini);
             db.SaveChanges();
         }
 
@@ -36,7 +36,7 @@ namespace MiniaturesRUs.Models
 
             ApplicationDbContext context = new ApplicationDbContext();
 
-            return context.Minitures.Count();
+            return context.Miniatures.Count();
         }
 
         internal static List<Miniature> GetProductsByPage(int page, byte pageSize)
@@ -44,7 +44,7 @@ namespace MiniaturesRUs.Models
             ApplicationDbContext context = new ApplicationDbContext();
 
             List<Miniature> prodList = context
-                                        .Minitures
+                                        .Miniatures
                                         .Take(pageSize) //grabs one page worth of products, equivilent to sql offset or fetch
                                         .OrderBy(p => p.Name)
                                         .Skip((page - 1) * pageSize)
@@ -57,7 +57,7 @@ namespace MiniaturesRUs.Models
         {
             ApplicationDbContext db = new ApplicationDbContext();
 
-            db.Minitures.Remove(miniature);
+            db.Miniatures.Remove(miniature);
             db.SaveChanges();
         }
 

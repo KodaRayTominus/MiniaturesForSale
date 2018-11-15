@@ -89,7 +89,7 @@ namespace MiniaturesRUs.Models
         }
 
         // public virtual DbSet<MyEntity> MyEntities { get; set; }
-        public virtual DbSet<Miniature> Minitures { get; set; }
+        public virtual DbSet<Miniature> Miniatures { get; set; }
 
         public virtual DbSet<Order> Orders { get; set; }
 

@@ -199,11 +199,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811090742010_initital.cs" />
-    <Compile Include="Migrations\201811090742010_initital.Designer.cs">
-      <DependentUpon>201811090742010_initital.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\InboxViewModel.cs" />
@@ -211,6 +206,7 @@
     <Compile Include="Models\MessageDB.cs" />
     <Compile Include="Models\Miniature.cs" />
     <Compile Include="Models\MiniatureDB.cs" />
+    <Compile Include="Models\MiniatureSearchViewModel.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrdersDB.cs" />
     <Compile Include="Models\PersonalMessage.cs" />
@@ -344,6 +340,8 @@
     <Content Include="Views\Person\Index.cshtml" />
     <Content Include="Views\Person\Message.cshtml" />
     <Content Include="Views\Person\Messages.cshtml" />
+    <Content Include="Views\Miniatures\Search.cshtml" />
+    <Content Include="Views\Shared\_MiniatureList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -360,11 +358,6 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201811090742010_initital.resx">
-      <DependentUpon>201811090742010_initital.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
