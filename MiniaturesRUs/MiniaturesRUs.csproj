@@ -206,6 +206,7 @@
     <Compile Include="Models\MessageDB.cs" />
     <Compile Include="Models\Miniature.cs" />
     <Compile Include="Models\MiniatureDB.cs" />
+    <Compile Include="Models\MiniatureSearchViewModel.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrdersDB.cs" />
     <Compile Include="Models\PersonalMessage.cs" />
@@ -339,6 +340,8 @@
     <Content Include="Views\Person\Index.cshtml" />
     <Content Include="Views\Person\Message.cshtml" />
     <Content Include="Views\Person\Messages.cshtml" />
+    <Content Include="Views\Miniatures\Search.cshtml" />
+    <Content Include="Views\Shared\_MiniatureList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

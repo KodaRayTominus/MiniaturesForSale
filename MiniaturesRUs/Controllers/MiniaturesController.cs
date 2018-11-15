@@ -12,68 +12,122 @@ namespace MiniaturesRUs.Controllers
 {
     public class MiniaturesController : Controller
     {
-        //private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
-        //[HttpGet]
-        //public ActionResult Search(MiniatureSearchViewModel search)
-        //{
+        [HttpGet]
+        public ActionResult Search(MiniatureSearchViewModel search)
+        {
 
-        //    if (UserHasNotSearched(search))
-        //    {
-        //        return View(search);
-        //    }
+            if (UserHasNotSearched(search))
+            {
+                return View(search);
+            }
 
-        //    //string maxPrice = Request.Form["MaxPrice"];
-        //    //if (maxPrice == null) { }
+            //IQueryable results DO NOT query database
+            IQueryable<Miniature> query =
+                from p in db.Miniatures
+                select p;
 
-        //    //SELECT * FROM Products
-        //    //IQueryable results DO NOT query database
-        //    IQueryable<Miniature> query =
-        //        from p in db.Minitures
-        //        select p;
+            if (search.Name != null)
+            {
+                query = from p in query
+                        where p.Name == search.Name
+                        select p;
+            }
+            if (search.Price.HasValue)
+            {
+                query = from p in query
+                        where p.Price >= search.Price
+                        select p;
+            }
+            if (search.Description != null)
+            {
+                query = from p in query
+                        where p.Description == search.Description
+                        select p;
+            }
+            if (search.Year.HasValue)
+            {
+                query = from p in query
+                        where p.Year == search.Year
+                        select p;
+            }
+            if (search.GameName != null)
+            {
+                query = from p in query
+                        where p.GameName == search.GameName
+                        select p;
+            }
+            if (search.Faction != null)
+            {
+                query = from p in query
+                        where p.Faction == search.Faction
+                        select p;
+            }
+            if (search.Size != null)
+            {
+                query = from p in query
+                        where p.Size == search.Size
+                        select p;
+            }
+            if (search.Speed.HasValue)
+            {
+                query = from p in query
+                        where p.Speed >= search.Speed
+                        select p;
+            }
+            if (search.Attack.HasValue)
+            {
+                query = from p in query
+                        where p.Attack >= search.Attack
+                        select p;
+            }
+            if (search.Strength.HasValue)
+            {
+                query = from p in query
+                        where p.Strength >= search.Strength
+                        select p;
+            }
+            if (search.HitPoints.HasValue)
+            {
+                query = from p in query
+                        where p.HitPoints >= search.HitPoints
+                        select p;
+            }
+            if (search.Defense.HasValue)
+            {
+                query = from p in query
+                        where p.Defense >= search.Defense
+                        select p;
+            }
 
-        //    if (search.MaxPrice.HasValue)
-        //    {
-        //        //Adds WHERE price < search.MaxPrice
-        //        query = from p in query
-        //                where p.Price <= search.MaxPrice.Value
-        //                select p;
-        //    }
-        //    if (search.MinPrice.HasValue)
-        //    {
-        //        //Add minPrice to WHERE clause
-        //        query = from p in query
-        //                where p.Price >= search.MinPrice.Value
-        //                select p;
-        //    }
-        //    if (search.ProductName != null)
-        //    {
-        //        query = from p in query
-        //                where p.Title.Contains(search.ProductName)
-        //                select p;
-        //    }
-        //    if (search.Category != null)
-        //    {
-        //        query = from p in query
-        //                where p.Category == search.Category
-        //                select p;
-        //    }
+            //SEND completed query to database and get products
+            search.SearchResults = query.ToList();
 
-        //    //SEND completed query to database and get products
-        //    search.SearchResults = query.ToList();
+            return View(search);
+        }
 
-        //    return View(search);
-        //}
+        private bool UserHasNotSearched(MiniatureSearchViewModel search)
+        {
+            if (search.Name == null &&
+                search.Price == null &&
+                search.Description == null &&
+                search.Year == null &&
+                search.GameName == null &&
+                search.Faction == null &&
+                search.Size == null &&
+                search.Speed == null &&
+                search.Attack == null &&
+                search.Strength == null &&
+                search.HitPoints == null &&
+                search.Defense == null
+                )
+            {
+                return true;
+            }
 
-        //private bool UserHasNotSearched(MiniatureSearchViewModel search)
-        //{
-        //    if ()
-        //    {
-        //        return true;
-        //    }
-
-        //    return false;
-        //}
+            return false;
+        }
 
         // GET: Miniatures
         public ActionResult Index(int? id)
