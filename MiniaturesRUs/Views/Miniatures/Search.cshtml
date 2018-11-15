@@ -6,8 +6,8 @@
 
 <h2>Search</h2>
 
-@*<form method="post" action="~/Products/Search">*@
-@using (Html.BeginForm("Search", "Miniature", FormMethod.Get))
+@*<form method="post" action="~/Miniature/Search">*@
+@using (Html.BeginForm("Search", "Miniatures", FormMethod.Get))
 {
     <div class="form-horizontal">
         <h4>MiniatureSearchViewModel</h4>
@@ -141,7 +141,7 @@
 @{
     if (Model.SearchResults.Count > 0)
     {
-        Html.RenderPartial("_ProductList", Model.SearchResults);
+        Html.RenderPartial("_MiniatureList", Model.SearchResults);
     }
     //else
     //{
