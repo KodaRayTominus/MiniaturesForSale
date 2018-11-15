@@ -39,7 +39,7 @@ namespace MiniaturesRUs.Controllers
         // GET: ProductOrders/Create
         public ActionResult Create()
         {
-            ViewBag.ProductId = new SelectList(db.Minitures, "MiniId", "Name");
+            ViewBag.ProductId = new SelectList(db.Miniatures, "MiniId", "Name");
             ViewBag.OrderId = new SelectList(db.Orders, "OrderId", "OrderId");
             return View();
         }
@@ -57,7 +57,7 @@ namespace MiniaturesRUs.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ProductId = new SelectList(db.Minitures, "MiniId", "Name", productOrder.ProductId);
+            ViewBag.ProductId = new SelectList(db.Miniatures, "MiniId", "Name", productOrder.ProductId);
             ViewBag.OrderId = new SelectList(db.Orders, "OrderId", "OrderId", productOrder.OrderId);
             return View(productOrder);
         }
@@ -74,7 +74,7 @@ namespace MiniaturesRUs.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ProductId = new SelectList(db.Minitures, "MiniId", "Name", productOrder.ProductId);
+            ViewBag.ProductId = new SelectList(db.Miniatures, "MiniId", "Name", productOrder.ProductId);
             ViewBag.OrderId = new SelectList(db.Orders, "OrderId", "OrderId", productOrder.OrderId);
             return View(productOrder);
         }
@@ -91,7 +91,7 @@ namespace MiniaturesRUs.Controllers
                 ProductOrderDB.UpdateProductOrder(productOrder);
                 return RedirectToAction("Index");
             }
-            ViewBag.ProductId = new SelectList(db.Minitures, "MiniId", "Name", productOrder.ProductId);
+            ViewBag.ProductId = new SelectList(db.Miniatures, "MiniId", "Name", productOrder.ProductId);
             ViewBag.OrderId = new SelectList(db.Orders, "OrderId", "OrderId", productOrder.OrderId);
             return View(productOrder);
         }

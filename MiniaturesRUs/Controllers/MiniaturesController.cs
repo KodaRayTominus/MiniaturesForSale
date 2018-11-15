@@ -12,7 +12,68 @@ namespace MiniaturesRUs.Controllers
 {
     public class MiniaturesController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        //private ApplicationDbContext db = new ApplicationDbContext();
+
+        //[HttpGet]
+        //public ActionResult Search(MiniatureSearchViewModel search)
+        //{
+
+        //    if (UserHasNotSearched(search))
+        //    {
+        //        return View(search);
+        //    }
+
+        //    //string maxPrice = Request.Form["MaxPrice"];
+        //    //if (maxPrice == null) { }
+
+        //    //SELECT * FROM Products
+        //    //IQueryable results DO NOT query database
+        //    IQueryable<Miniature> query =
+        //        from p in db.Minitures
+        //        select p;
+
+        //    if (search.MaxPrice.HasValue)
+        //    {
+        //        //Adds WHERE price < search.MaxPrice
+        //        query = from p in query
+        //                where p.Price <= search.MaxPrice.Value
+        //                select p;
+        //    }
+        //    if (search.MinPrice.HasValue)
+        //    {
+        //        //Add minPrice to WHERE clause
+        //        query = from p in query
+        //                where p.Price >= search.MinPrice.Value
+        //                select p;
+        //    }
+        //    if (search.ProductName != null)
+        //    {
+        //        query = from p in query
+        //                where p.Title.Contains(search.ProductName)
+        //                select p;
+        //    }
+        //    if (search.Category != null)
+        //    {
+        //        query = from p in query
+        //                where p.Category == search.Category
+        //                select p;
+        //    }
+
+        //    //SEND completed query to database and get products
+        //    search.SearchResults = query.ToList();
+
+        //    return View(search);
+        //}
+
+        //private bool UserHasNotSearched(MiniatureSearchViewModel search)
+        //{
+        //    if ()
+        //    {
+        //        return true;
+        //    }
+
+        //    return false;
+        //}
 
         // GET: Miniatures
         public ActionResult Index(int? id)
