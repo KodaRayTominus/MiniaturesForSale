@@ -133,6 +133,42 @@
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="YAF, Version=2.2.4.14, Culture=neutral, PublicKeyToken=8b49dc47f4701f66, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\YAF.dll</HintPath>
+    </Reference>
+    <Reference Include="YAF.Classes.Config, Version=2.2.4.14, Culture=neutral, PublicKeyToken=8b49dc47f4701f66, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\YAF.Classes.Config.dll</HintPath>
+    </Reference>
+    <Reference Include="YAF.Classes.Data, Version=2.2.4.14, Culture=neutral, PublicKeyToken=8b49dc47f4701f66, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\YAF.Classes.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="YAF.Controls, Version=2.2.4.14, Culture=neutral, PublicKeyToken=8b49dc47f4701f66, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\YAF.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="YAF.Core, Version=2.2.4.14, Culture=neutral, PublicKeyToken=8b49dc47f4701f66, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\YAF.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="YAF.Data.MsSql, Version=2.2.4.14, Culture=neutral, PublicKeyToken=8b49dc47f4701f66, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\YAF.Data.MsSql.dll</HintPath>
+    </Reference>
+    <Reference Include="YAF.Providers, Version=2.2.4.14, Culture=neutral, PublicKeyToken=8b49dc47f4701f66, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\YAF.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="YAF.Types, Version=2.2.4.14, Culture=neutral, PublicKeyToken=8b49dc47f4701f66, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\YAF.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="YAF.Utils, Version=2.2.4.14, Culture=neutral, PublicKeyToken=8b49dc47f4701f66, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\YAF.Utils.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
@@ -196,6 +232,13 @@
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Controllers\ProductOrdersController.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -215,6 +258,13 @@
     <Compile Include="Models\ProductOrder.cs" />
     <Compile Include="Models\ProductOrderDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="Controllers\MiniaturesController.cs" />
   </ItemGroup>
@@ -225,6 +275,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\indox.css" />
     <Content Include="Content\user-profile-page.css" />
+    <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="forum\advanced.aspx" />
@@ -3697,6 +3748,9 @@
     <Content Include="forum\themes\Fancy\fonts\Lobster-webfont.ttf" />
     <Content Include="forum\themes\Fancy\fonts\Lobster-webfont.woff" />
     <Content Include="forum\YafUploader.ashx" />
+    <Content Include="app.config" />
+    <Content Include="db.config" />
+    <Content Include="mail.config" />
     <None Include="Properties\PublishProfiles\TheMiniatureMan - Web Deploy.pubxml" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -3730,7 +3784,9 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -3799,6 +3855,8 @@
     <Content Include="Views\Person\Messages.cshtml" />
     <Content Include="Views\Miniatures\Search.cshtml" />
     <Content Include="Views\Shared\_MiniatureList.cshtml" />
+    <Content Include="UrlRewriter.config" />
+    <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
