@@ -239,6 +239,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="forum\Forum.aspx.cs">
+      <DependentUpon>Forum.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="forum\Forum.aspx.designer.cs">
+      <DependentUpon>Forum.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -3721,6 +3728,7 @@
     <Content Include="forum\themes\yafvision\yafvision.js" />
     <Content Include="forum\themes\yafvision\yafvision_src.js" />
     <Content Include="forum\uploads\readme.txt" />
+    <Content Include="forum\Forum.aspx" />
     <Content Include="forum\YafAjax.asmx" />
     <Content Include="forum\YafWebService.asmx" />
     <Content Include="Global.asax" />
