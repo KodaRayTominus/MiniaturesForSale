@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MiniaturesRUs.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,18 @@ namespace MiniaturesRUs.Controllers
 {
     public class HomeController : Controller
     {
+
+        //this code is used to set up a controller for access to the blob storage
+        //BlobUtility utility;
+        //ApplicationDbContext db;
+        //string AccountName = "theminimanministorage";
+        //string AccountKey = "g+8G7x8TSsURgscb8NLPmRPEr5/668fkH8l+MHFfjIzwJpCgAeL9B9+zIRAN2KsdM35Bg0jtrNv6wj0NDUiR+A==";
+        //public HomeController()
+        //{
+        //    utility = new BlobUtility(AccountName, AccountKey);
+        //    db = new ApplicationDbContext();
+        //}
+
         public ActionResult Index()
         {
             return View();
