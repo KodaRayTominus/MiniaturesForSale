@@ -355,6 +355,9 @@
     <Content Include="Views\Person\Messages.cshtml" />
     <Content Include="Views\Miniatures\Search.cshtml" />
     <Content Include="Views\Shared\_MiniatureList.cshtml" />
+    <Content Include="Views\Person\Edit.cshtml" />
+    <Content Include="Views\Person\UserImages.cshtml" />
+    <Content Include="Views\Person\UploadImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
