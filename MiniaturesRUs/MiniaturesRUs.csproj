@@ -47,18 +47,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=4.8.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Autofac.dll</HintPath>
-    </Reference>
-    <Reference Include="CookComputing.XmlRpcV2, Version=3.0.0.0, Culture=neutral, PublicKeyToken=a7d6e17aa302004d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\CookComputing.XmlRpcV2.dll</HintPath>
-    </Reference>
-    <Reference Include="FarsiLibrary, Version=2.5.1.5, Culture=neutral, PublicKeyToken=d1bcbd1937c9d5a3, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\FarsiLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="Intelligencia.UrlRewriter, Version=2.0.0.6, Culture=neutral, PublicKeyToken=0573f3650687980d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Intelligencia.UrlRewriter.dll</HintPath>
@@ -90,14 +78,6 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="nStuff.UpdateControls, Version=1.2.0.0, Culture=neutral, PublicKeyToken=72f3f55dd4809977, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\nStuff.UpdateControls.dll</HintPath>
-    </Reference>
-    <Reference Include="Omu.ValueInjecter, Version=3.1.3.0, Culture=neutral, PublicKeyToken=5692a4ecdffbe736, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Omu.ValueInjecter.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Common, Version=5.0.0.0, Culture=neutral, PublicKeyToken=02c12cbda47e6587, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -185,21 +165,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\YAF.Classes.Config.dll</HintPath>
     </Reference>
-    <Reference Include="YAF.Classes.Data, Version=2.2.4.14, Culture=neutral, PublicKeyToken=8b49dc47f4701f66, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\YAF.Classes.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="YAF.Controls, Version=2.2.4.14, Culture=neutral, PublicKeyToken=8b49dc47f4701f66, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\YAF.Controls.dll</HintPath>
-    </Reference>
     <Reference Include="YAF.Core, Version=2.2.4.14, Culture=neutral, PublicKeyToken=8b49dc47f4701f66, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\YAF.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="YAF.Data.MsSql, Version=2.2.4.14, Culture=neutral, PublicKeyToken=8b49dc47f4701f66, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\YAF.Data.MsSql.dll</HintPath>
     </Reference>
     <Reference Include="YAF.Providers, Version=2.2.4.14, Culture=neutral, PublicKeyToken=8b49dc47f4701f66, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -325,10 +293,6 @@
     <Compile Include="Controllers\MiniaturesController.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Database.mdf" />
-    <Content Include="App_Data\Database_log.ldf">
-      <DependentUpon>Database.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -3810,8 +3774,17 @@
     <Content Include="forum\themes\Fancy\fonts\Lobster-webfont.woff" />
     <Content Include="forum\YafUploader.ashx" />
     <Content Include="app.config" />
-    <Content Include="db.config" />
+    <Content Include="db.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="mail.config" />
+    <Content Include="App_Browsers\ie.browser" />
+    <Content Include="App_Browsers\ie11.browser" />
+    <Content Include="App_Browsers\MozillaPatch.browser" />
+    <Content Include="App_Browsers\Net4Patch.browser" />
+    <Content Include="App_Browsers\OceanAppleWebKit.browser" />
+    <Content Include="App_Browsers\OceanSpiders.browser" />
+    <Content Include="App_Browsers\w3cvalidator.browser" />
     <None Include="Properties\PublishProfiles\TheMiniatureMan - Web Deploy.pubxml" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -3917,10 +3890,14 @@
     <Content Include="Views\Person\Messages.cshtml" />
     <Content Include="Views\Miniatures\Search.cshtml" />
     <Content Include="Views\Shared\_MiniatureList.cshtml" />
-    <Content Include="UrlRewriter.config" />
+    <Content Include="UrlRewriter.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Site.Master" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">
       <SubType>Designer</SubType>
