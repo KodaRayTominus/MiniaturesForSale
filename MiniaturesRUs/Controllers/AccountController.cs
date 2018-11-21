@@ -1,14 +1,19 @@
 ﻿using System;
+using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MiniaturesRUs.Models;
+using YAF.Core;
+using YAF.Providers.Membership;
+using YAF.Utils;
 
 namespace MiniaturesRUs.Controllers
 {
@@ -156,13 +161,13 @@ namespace MiniaturesRUs.Controllers
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
+                    CreateYAFUser(model.Email, model.Password, model.Email);
                     return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
@@ -480,6 +485,38 @@ namespace MiniaturesRUs.Controllers
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
         }
-        #endregion
+
+        private static void CreateYAFUser(string sUsername, string sPassword, string email)
+        {
+            if (!UserMembershipHelper.UserExists(sUsername, email))
+            {
+
+                YafMembershipProvider mb = (YafMembershipProvider)System.Web.Security.Membership.Providers["YafMembershipProvider"];
+                int? forumUserID = 0;
+
+                if (!mb.ValidateUser(sUsername, sPassword))
+                {
+                    MembershipCreateStatus status;
+                    MembershipUser forumUser = mb.CreateUser(sUsername, sPassword, email, "question", "answer", true, null, out status);
+                    // create the user in the YAF DB as well as sync roles...
+                    forumUserID = RoleMembershipHelper.CreateForumUser(forumUser, 1);
+
+                    RoleMembershipHelper.SetupUserRoles(1, sUsername);
+                    RoleMembershipHelper.AddUserToRole(sUsername, "Registered");
+
+                    // create empty profile just so they have one
+                    YafUserProfile userProfile = YafUserProfile.GetProfile(sUsername);
+                    userProfile.Homepage = "fwd.com";
+
+                    // setup their inital profile information
+                    userProfile.Save();
+                }
+                else
+                {
+                    return;
+                }
+            }
+        }
+            #endregion
     }
 }

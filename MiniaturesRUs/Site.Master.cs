@@ -60,10 +60,11 @@ namespace YAF.SampleWebApplication
         protected void Page_Load(object sender, EventArgs e)
         {
             var loginLink = this.HeadLoginView.FindControlAs<HyperLink>("LoginLink");
+            
 
             if (loginLink != null)
             {
-                loginLink.NavigateUrl = "~/forum/forum.aspx?g=login&ReturnUrl={0}".FormatWith(this.GetReturnUrl());
+                loginLink.NavigateUrl = "~/Account/LogIn";
             }
         }
     }
