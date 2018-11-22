@@ -283,6 +283,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="forum\controls\YafHeader.ascx.cs">
+      <DependentUpon>YafHeader.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="forum\controls\YafHeader.ascx.designer.cs">
+      <DependentUpon>YafHeader.ascx</DependentUpon>
+    </Compile>
     <Compile Include="forum\Forum.aspx.cs">
       <DependentUpon>Forum.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

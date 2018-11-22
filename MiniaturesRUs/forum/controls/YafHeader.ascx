@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="YafHeader.ascx.cs"  Inherits="YAF.Controls.YafHeader" %>
 <div id="yafheader">
-    <asp:Panel id="GuestUserMessage" Enabled="false" CssClass="guestUser" runat="server" Visible="false">
+    <asp:Panel id="GuestUserMessage" CssClass="guestUser" runat="server" Visible="false">
        <asp:Label id="GuestMessage" runat="server" ></asp:Label>
     </asp:Panel>
    
