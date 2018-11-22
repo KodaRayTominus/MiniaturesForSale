@@ -464,6 +464,59 @@ namespace YAF.Controls
             {
                 return;
             }
+
+            // Login
+            if (Config.AllowLoginAndLogoff)
+            {
+                if (this.Get<YafBoardSettings>().UseLoginBox && !(this.Get<IYafSession>().UseMobileTheme ?? false))
+                {
+                    RenderMenuItem(
+                        this.menuListItems,
+                        "menuAccount",
+                        "LoginLink",
+                        this.GetText("TOOLBAR", "LOGIN"),
+                        this.GetText("TOOLBAR", "LOGIN_TITLE"),
+                        "javascript:void(0);",
+                        true,
+                        false,
+                        null,
+                        null);
+                }
+                else
+                {
+                    var returnUrl = this.GetReturnUrl().IsSet()
+                                           ? "ReturnUrl={0}".FormatWith(this.GetReturnUrl())
+                                           : string.Empty;
+
+                    RenderMenuItem(
+                        this.menuListItems,
+                        "menuAccount",
+                        null,
+                        this.GetText("TOOLBAR", "LOGIN"),
+                        this.GetText("TOOLBAR", "LOGIN_TITLE"),
+                        "~/Account/LogIn",
+                        true,
+                        false,
+                        null,
+                        null);
+                }
+            }
+
+            // Register
+            if (!this.Get<YafBoardSettings>().DisableRegistrations)
+            {
+                RenderMenuItem(
+                    this.menuListItems,
+                    "menuGeneral",
+                    null,
+                    this.GetText("TOOLBAR", "REGISTER"),
+                    this.GetText("TOOLBAR", "REGISTER_TITLE"),
+                    "~/Account/Register",
+                    true,
+                    false,
+                    null,
+                    null);
+            }
         }
 
         /// <summary>
