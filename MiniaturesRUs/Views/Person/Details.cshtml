@@ -128,7 +128,7 @@
                                 </ul>
                             </div>
                             <div class="col-md-2">
-                                <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
+                                <input type="button" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" onclick="location.href='@Url.Action("Edit", "Person", new { id = User.Identity.GetUserId() })'" />
                             </div>
                         </div>
                     </div>

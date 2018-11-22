@@ -70,6 +70,12 @@ namespace MiniaturesRUs.Models
         /// </summary>
         public List<int> Owned { get; set; }
 
+        public ApplicationUser()
+        {
+            UserImages = new HashSet<UserImage>();
+        }
+        public ICollection<UserImage> UserImages { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -96,6 +102,8 @@ namespace MiniaturesRUs.Models
         public virtual DbSet<ProductOrder> ProductOrders { get; set; }
 
         public virtual DbSet<PersonalMessage> PersonalMessages { get; set; }
+
+        public virtual DbSet<UserImage> UserImages { get; set; }
 
         //public virtual DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
