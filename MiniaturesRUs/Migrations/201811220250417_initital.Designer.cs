@@ -13,7 +13,7 @@ namespace MiniaturesRUs.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201811180530114_initital"; }
+            get { return "201811220250417_initital"; }
         }
         
         string IMigrationMetadata.Source
